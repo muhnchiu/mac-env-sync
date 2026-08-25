@@ -4,8 +4,8 @@
 - **日期**：2026-08-24
 - **范围**：用户名 `<username>` 下的任意台 Mac；当前已知三台实例——
   - Mac mini（hostname `MacMini`）
-  - MacBook Pro 13（hostname `MacBookPro13`）
-  - MacBook Pro M4 Pro（hostname 待定，下文以 `<hostname3>` 占位）
+  - Pro 13（hostname `MacBookPro13`）
+  - Pro 14（hostname 待定，下文以 `<hostname3>` 占位）
 - **基线**：均为 arm64 / macOS 26.x / 用户 `<username>`；框架不限机器数量，新增机器只需追加一台专属配置，不改共享核心。
 - **一致性目标**：共享核心 + 各机保留差异（非镜像）
 - **状态**：待执行
@@ -16,9 +16,9 @@
 
 配置完一台 Mac，需要在其它机器上重复配置；环境差异时还要单独排查。希望用一套版本化的配置让**任意多台**机器收敛到"共享核心 + 显式声明的差异"，换机/重装可一条龙复刻。新增机器时只追加该机专属配置、不改动共享核心。
 
-当前已对比过 Mac mini 与 MacBook Pro 13（产物 `mini.txt` / `pro.txt`），主要差异点（作为设计依据的实例）：
+当前已对比过 Mac mini 与 Pro 13（产物 `mini.txt` / `pro.txt`），主要差异点（作为设计依据的实例）：
 
-| 维度 | Mac mini | MacBook Pro |
+| 维度 | Mac mini | Pro 13 |
 |---|---|---|
 | Node 管理 | brew `node` v24 + nvm | nvm v22 |
 | Python 管理 | pyenv 3.11.14（重量级包：numpy/scipy/matplotlib/mlx/redis/pydantic/docx/pptx…） | pyenv 3.11.9（近裸装） |
@@ -107,7 +107,7 @@ arch     = "arm64"
 notes    = "GnuPG 链 / postgresql@18 / 远控工具"
 
 [[machine]]
-hostname = "<hostname3>"      # MacBook Pro M4 Pro，hostname 待定后填
+hostname = "<hostname3>"      # Pro 14，hostname 待定后填
 role     = "laptop"           # 可与 13 合并同角色，或独立
 arch     = "arm64"
 notes    = "新增机器示例"
@@ -247,7 +247,7 @@ chezmoi 把它渲染到 `~/.zprofile.local`，由上面的 `source` 行加载。
 {{- else if eq .chezmoi.hostname "MacBookPro13" }}
 # Pro 独有的 PATH 在此（当前无）
 {{- else if eq .chezmoi.hostname "<hostname3>" }}
-# 第三台（M4 Pro）独有的 PATH 在此
+# 第三台（Pro 14）独有的 PATH 在此
 {{- end }}
 
 ### 5.2 `dot_zshrc`（交互 shell，所有机器一致）
@@ -373,7 +373,7 @@ mas "iMovie",      id: 408981434
 mas "GarageBand",  id: 682658836
 ```
 
-### 6.3 `shared/Brewfile.MacBookPro13`（MacBook Pro 13 独有）
+### 6.3 `shared/Brewfile.MacBookPro13`（Pro 13 独有）
 
 ```ruby
 tap "azure/azure-cli"
@@ -407,12 +407,12 @@ brew "bash"
 cask "azure-cli-preview"
 ```
 
-### 6.4 `shared/Brewfile.<hostname3>`（MacBook Pro M4 Pro 独有，hostname 确定后填）
+### 6.4 `shared/Brewfile.<hostname3>`（Pro 14 独有，hostname 确定后填）
 
 > 新机器，专属清单待跑过 `mac-snapshot.sh` 对比后填入。当前可先建空文件占位（仅含注释），避免入口模板渲染失败。
 
 ```ruby
-# MacBook Pro M4 Pro 专属，待补充
+# Pro 14 专属，待补充
 ```
 
 ### 6.5 入口 `dot_Brewfile.tmpl`
@@ -531,7 +531,7 @@ claude --resume
 
 ## 11. 执行顺序（建议分批，可勾选）
 
-- [ ] **阶段 0 · 准备**：GitHub 私有仓库 `<github-user>/dotfiles`（已就绪）；iCloud 可用（已就绪）；确定第三台（M4 Pro）的 hostname。
+- [ ] **阶段 0 · 准备**：GitHub 私有仓库 `<github-user>/dotfiles`（已就绪）；iCloud 可用（已就绪）；确定第三台（Pro 14）的 hostname。
 - [ ] **阶段 1 · 导出现状**：每台机器各跑第 8.1 节命令，留备份。
 - [ ] **阶段 2 · 建 dotfiles 仓库骨架**：先在一台（如 Mac mini）上 `chezmoi init`，按第 3 节建目录结构，填入第 4/5/6 节的配置文件与清单；在 `shared/machines.toml` 登记全部已知机器。
 - [ ] **阶段 3 · 首次 apply（首台）**：`chezmoi apply` → 验证 `.zshrc/.zprofile/mise 配置` 生效。

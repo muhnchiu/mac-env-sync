@@ -2,7 +2,7 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: 用 superpowers:executing-plans 逐任务执行本计划。
 
-**Goal:** 让多台 Mac（Mac mini / MacBook Pro 13 / MacBook Pro M4 Pro）的软件与配置收敛到"共享核心 + 显式差异"，运行时统一由 mise 管理，跨机可一键复刻、可续接思考。
+**Goal:** 让多台 Mac（Mac mini / Pro 13 / Pro 14）的软件与配置收敛到"共享核心 + 显式差异"，运行时统一由 mise 管理，跨机可一键复刻、可续接思考。
 
 **Architecture:** chezmoi 管理 dotfiles 仓库（GitHub `<github-user>/dotfiles`，hostname 分流 core/extras）+ Homebrew Bundle 分层装软件 + mise 接管 node/python/java + iCloud 同步 Claude 会话记忆。设计文档见 `2026-08-24-mac-sync-design.md`，操作手册见 `docs/manuals/new-machine-setup.md`。
 
@@ -136,9 +136,9 @@ zsh -l -i -c 'which node python3 java; mise current' | grep -v WARN
 
 ---
 
-### Task T4: MacBook Pro 13 导出快照与备份
+### Task T4: Pro 13 导出快照与备份
 
-**机器：** MacBook Pro 13（hostname `MacBookPro13`）
+**机器：** Pro 13（hostname `MacBookPro13`）
 **依赖：** 无
 
 **Step 1:** 跑采集脚本（经 iCloud 路径，无需 GitHub）
@@ -163,9 +163,9 @@ cp ~/.bash_profile ~/env-migration-backup/bash_profile.$(date +%Y%m%d).bak 2>/de
 
 ---
 
-### Task T5: MacBook Pro 13 拉取 dotfiles 并应用
+### Task T5: Pro 13 拉取 dotfiles 并应用
 
-**机器：** MacBook Pro 13
+**机器：** Pro 13
 **依赖：** dotfiles 已推送（P3）；T4 完成
 
 **Step 1:** 装 chezmoi/mise/mas
@@ -202,9 +202,9 @@ zsh -l -i -c 'which node python3 java; mise current; brew bundle check --file ~/
 
 ---
 
-### Task T6: MacBook Pro 13 卸载退役 formula + 建 Claude 软链
+### Task T6: Pro 13 卸载退役 formula + 建 Claude 软链
 
-**机器：** MacBook Pro 13
+**机器：** Pro 13
 **依赖：** T5 完成并稳定
 
 **Step 1:** 卸载（Pro 可能无 brew `node` formula，忽略 not installed 报错）
@@ -270,9 +270,9 @@ git add -A && git commit -m "feat: 共享 ~/.claude/CLAUDE.md 长期记忆" && g
 
 ---
 
-### Task T9: MacBook Pro M4 Pro 接入（hostname 待定后执行）
+### Task T9: Pro 14 接入（hostname 待定后执行）
 
-**机器：** MacBook Pro M4 Pro（hostname 占位 `<hostname3>`）
+**机器：** Pro 14（hostname 占位 `<hostname3>`）
 **依赖：** 拿到该机 `scutil --get LocalHostName`
 
 **Step 1:** 采集快照
@@ -289,10 +289,10 @@ bash ~/Library/Mobile\ Documents/com~apple~CloudDocs/mac-env-sync/scripts/mac-sn
 
 **Step 3:** 提交推送
 ```bash
-cd ~/.local/share/chezmoi && git add -A && git commit -m "feat: 接入 M4 Pro (<hostname3>)" && git push
+cd ~/.local/share/chezmoi && git add -A && git commit -m "feat: 接入 Pro 14 (<hostname3>)" && git push
 ```
 
-**Step 4:** 在 M4 Pro 上走 T5 流程（chezmoi init --apply + brew bundle + mise install + refresh-dev）
+**Step 4:** 在 Pro 14 上走 T5 流程（chezmoi init --apply + brew bundle + mise install + refresh-dev）
 
 - [ ] T9 完成（M4 hostname：__________）
 
@@ -325,10 +325,10 @@ ls ~/.zshrc.backup ~/.zprofile.bak ~/new-zshrc ~/old-zshup 2>/dev/null   # 应�
 | T1 refresh-dev | Mac mini | ✅ |
 | T2 php 决策 | Mac mini | ✅ |
 | T3 卸载退役 formula | Mac mini | ✅（含数据目录清理） |
-| T4 快照+备份 | MacBook Pro 13 | ✅ |
-| T5 拉取+应用 | MacBook Pro 13 | ✅ |
-| T6 卸载+软链 | MacBook Pro 13 | ✅ |
+| T4 快照+备份 | Pro 13 | ✅ |
+| T5 拉取+应用 | Pro 13 | ✅ |
+| T6 卸载+软链 | Pro 13 | ✅ |
 | T7 oh-my-zsh bootstrap | 两台 | ✅ |
 | T8 CLAUDE.md 共享 | 两台 | ✅ |
-| T9 M4 Pro 接入 | M4 Pro | ⏳（等 hostname） |
+| T9 Pro 14 接入 | Pro 14 | ⏳（等 hostname） |
 | T10 全局验收 | 全部 | ⏳ |

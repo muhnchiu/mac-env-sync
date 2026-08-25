@@ -1,6 +1,6 @@
 # mac-env-sync
 
-多台 Mac 环境同步方案的项目仓库。当前已知实例：Mac mini / MacBook Pro 13 / MacBook Pro M4 Pro；框架按"任意台 Mac"设计，新增机器只追加专属配置、不改共享核心。
+多台 Mac 环境同步方案的项目仓库。当前已知实例：Mac mini / Pro 13 / Pro 14；框架按"任意台 Mac"设计，新增机器只追加专属配置、不改共享核心。
 
 - **设计文档**：`docs/plans/2026-08-24-mac-sync-design.md`（必读，完整原理与分阶段执行清单）
 - **chezmoi 操作指南**：`docs/manuals/chezmoi-guide.md`（chezmoi 机制/命令/模板/同步/坑，贴合本项目 dotfiles 结构）
@@ -13,8 +13,8 @@
 | 机器 | hostname | 角色 | 定位 | 备注 |
 |---|---|---|---|---|
 | Mac mini | `MacMini` | **主编辑机**（primary） | 固定、常开、软件最全，作为 dotfiles 的"事实来源" | chezmoi source 在此首次编写并 push |
-| MacBook Pro 13 | `MacBookPro13` | 辅机（auxiliary） | 便携 + 远控，从仓库同步 | GnuPG 链 / postgresql@18 / 远控工具 |
-| MacBook Pro M4 Pro | `<hostname3>`（待定） | 辅机（auxiliary） | 便携高性能，从仓库同步 | 新增机器，hostname 确定后填 |
+| Pro 13 | `MacBookPro13` | 辅机（auxiliary） | 便携 + 远控，从仓库同步 | GnuPG 链 / postgresql@18 / 远控工具 |
+| Pro 14 | `<hostname3>`（待定） | 辅机（auxiliary） | 便携高性能，从仓库同步 | 新增机器，hostname 确定后填 |
 
 ### "主编辑机"是什么意思
 
@@ -115,7 +115,7 @@ cd ~/.local/share/chezmoi
 git add -A && git commit -m "init: dotfiles baseline" && git push -u origin main
 ```
 
-### 4.2 辅机同步（MacBook Pro 13 / M4 Pro，每台各一次）
+### 4.2 辅机同步（Pro 13 / Pro 14，每台各一次）
 
 ```bash
 # 0) 装基础工具
@@ -138,7 +138,7 @@ brew bundle install --file ~/.Brewfile
 claude --resume
 ```
 
-### 4.3 新增一台全新机器（如 M4 Pro）
+### 4.3 新增一台全新机器（如 Pro 14）
 
 ```bash
 # 1) 先采集快照，产出差异（在主编辑机上对比）
@@ -146,13 +146,13 @@ bash "/Users/<username>/workspace/mac-env-sync/scripts/mac-snapshot.sh" > m4pro.
 #   或直接走 iCloud 路径：
 bash ~/Library/Mobile\ Documents/com~apple~CloudDocs/mac-env-sync/scripts/mac-snapshot.sh > m4pro.txt
 
-# 2) 对照已有 mini.txt / pro.txt，确定 M4 Pro 专属要装什么，
+# 2) 对照已有 mini.txt / pro.txt，确定 Pro 14 专属要装什么，
 #    在 dotfiles 仓库新增 shared/Brewfile.<hostname3>，
 #    在 dot_Brewfile.tmpl 加一个 else if 分支，
 #    在 dot_zprofile.local.tmpl 加一个 hostname 分支（若有独有 PATH），
 #    在 shared/machines.toml 登记一行。提交 push。
 
-# 3) 在 M4 Pro 上走第 4.2 节辅机同步流程即可。
+# 3) 在 Pro 14 上走第 4.2 节辅机同步流程即可。
 ```
 
 ---

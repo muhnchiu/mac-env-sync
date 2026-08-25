@@ -99,7 +99,7 @@ chezmoi apply -v                          # 渲染到本机
 git add -A && git commit -m "init: dotfiles baseline" && git push -u origin main
 ```
 
-### 4.2 辅机拉取（MacBook Pro 13 / M4 Pro，每台一次）
+### 4.2 辅机拉取（Pro 13 / Pro 14，每台一次）
 ```bash
 chezmoi init --apply git@github.com:<github-user>/dotfiles.git   # 克隆 + 按本机 hostname 渲染 + apply
 ```
@@ -167,7 +167,7 @@ chezmoi edit ~/.zshrc → 改 → 保存 → chezmoi diff → 确认 → chezmoi
 {{- else if eq .chezmoi.hostname "MacBookPro13" }}
 # Pro 独有 PATH（当前无）
 {{- else if eq .chezmoi.hostname "<hostname3>" }}
-# M4 Pro 独有 PATH
+# Pro 14 独有 PATH
 {{- end }}
 ```
 
@@ -245,7 +245,7 @@ git remote add origin git@github.com:<github-user>/dotfiles.git
 
 ## 10. 新增一台机器的 chezmoi 侧改动
 
-新机器（如 M4 Pro，hostname 确定后）接入，在 source 里改这 5 处（共享核心不动）：
+新机器（如 Pro 14，hostname 确定后）接入，在 source 里改这 5 处（共享核心不动）：
 
 1. **`shared/Brewfile.<hostname3>`**：建该机专属清单（先跑 `mac-snapshot.sh` 对比后填；可先建空占位文件避免模板渲染失败）。
 2. **`dot_Brewfile.tmpl`**：加一个 `else if eq .chezmoi.hostname "<hostname3>"` 分支 include 上面的专属文件。
