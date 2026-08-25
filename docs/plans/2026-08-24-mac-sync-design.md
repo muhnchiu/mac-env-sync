@@ -230,7 +230,6 @@ typeset -U path
 [[ -d $HOME/.opencode/bin ]]          && path=($HOME/.opencode/bin $path)
 [[ -d $HOME/.go/bin ]]                && path=($HOME/.go/bin $path)
 [[ -d /opt/homebrew/opt/openjdk@17/bin ]] && path=(/opt/homebrew/opt/openjdk@17/bin $path)
-[[ -d /opt/homebrew/opt/php@5.6/bin ]]    && path=(/opt/homebrew/opt/php@5.6/bin $path)
 [[ -d /usr/local/mysql/bin ]]         && path=(/usr/local/mysql/bin $path)
 [[ -d /usr/local/apache-maven-3.9.12/bin ]] && path=(/usr/local/apache-maven-3.9.12/bin $path)
 
@@ -293,8 +292,6 @@ rm -f ~/.zcompdump* ~/.v8flags.* ~/.DS_Store
 tap "homebrew/services"
 tap "mongodb/brew"
 tap "redis/redis"
-tap "shivammathur/php"
-tap "shivammathur/extensions"
 tap "exolnet/deprecated"
 tap "farion1231/ccswitch"
 tap "anomalyco/tap"
@@ -373,9 +370,6 @@ brew "hdrhistogram_c"
 brew "nbytes"
 brew "uvwasi"
 
-# PHP 5.6（维护 PHP 5.5 老项目，shivammathur tap 提供的最接近版本；mise 不覆盖此遗留版本）
-brew "shivammathur/php/php@5.6"
-
 cask "antigravity-tools"
 
 mas "iMovie",      id: 408981434
@@ -412,9 +406,6 @@ brew "openjpeg"
 brew "direnv"
 brew "antidote"
 brew "bash"
-
-# PHP 5.6（维护 PHP 5.5 老项目，与 Mac mini 一致；mise 不覆盖此遗留版本）
-brew "shivammathur/php/php@5.6"
 
 cask "azure-cli-preview"
 ```

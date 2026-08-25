@@ -69,6 +69,7 @@ cd ~/.local/share/chezmoi && git status   # 无变更则跳过 commit
 **状态：** ✅ 已完成（2026-08-25）
 **决策：** 用 **php@5.6**（shivammathur tap 提供的最接近 PHP 5.5 的可用版本；php@5.5 不存在、无法在 arm64 构建）。放在 `Brewfile.MacMini`（dev 机维护老项目用），core 不含 php。tap 已 `brew trust`。安装前需开本地代理 `export http(s)_proxy=http://127.0.0.1:7897`（下载 GitHub bottle）。
 **遗留：** php@5.6 默认 php.ini 引用未装的 redis.so pecl 扩展，`php -v` 有 warning（无害）；需时可 `pecl install redis` 或在 `/opt/homebrew/etc/php/5.6/php.ini` 注释 extension=redis。
+**更新（2026-08-25）：** PHP 老项目本地已完全跑不起来，php@5.6 + shivammathur tap 已从两机 Brewfile/zprofile 全部移除并卸载（dotfiles `89b5670`）。T2 决策作废，php 不再纳入同步体系。
 
 **Step 1:** 确认是否需要 PHP
 ```bash

@@ -267,7 +267,7 @@ brew bundle check --file ~/.Brewfile
 # 4) 关键工具可用
 node -v; python3 --version; java -version 2>&1 | head -1
 mvn -v 2>&1 | head -1           # 若装了 maven
-php -v 2>&1 | head -1           # 若装了 php@5.6（维护 5.5 老项目的机器）
+# （php 已移除——老项目本地不再跑；若将来需要再按设计文档第 8 节评估装回）
 
 # 5) shell 无报错加载
 zsh -l -i -c 'echo shell-ok'

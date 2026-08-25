@@ -13,7 +13,7 @@
 | 机器 | hostname | 角色 | 定位 | 备注 |
 |---|---|---|---|---|
 | Mac mini | `MacMini` | **主编辑机**（primary） | 固定、常开、软件最全，作为 dotfiles 的"事实来源" | chezmoi source 在此首次编写并 push |
-| Pro 13 | `MacBookPro13` | 辅机（auxiliary） | 便携 + 远控，从仓库同步 | GnuPG 链 / postgresql@18 / php@5.6 / 远控工具 |
+| Pro 13 | `MacBookPro13` | 辅机（auxiliary） | 便携 + 远控，从仓库同步 | GnuPG 链 / postgresql@18 / 远控工具 |
 | Pro 14 | `<hostname3>`（待定） | 辅机（auxiliary） | 便携高性能，从仓库同步 | 新增机器，hostname 确定后填 |
 
 ### "主编辑机"是什么意思
