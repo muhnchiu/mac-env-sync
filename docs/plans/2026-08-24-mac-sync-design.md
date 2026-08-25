@@ -5,10 +5,10 @@
 - **范围**：用户名 `<username>` 下的任意台 Mac；当前已知三台实例——
   - Mac mini（hostname `MacMini`）
   - Pro 13（hostname `MacBookPro13`）
-  - Pro 14（hostname 待定，下文以 `<hostname3>` 占位）
+  - Pro 14（hostname `MacBookPro14`）
 - **基线**：均为 arm64 / macOS 26.x / 用户 `<username>`；框架不限机器数量，新增机器只需追加一台专属配置，不改共享核心。
 - **一致性目标**：共享核心 + 各机保留差异（非镜像）
-- **状态**：Mac mini / Pro 13 已完成迁移（T1–T8 ✅，2026-08-25）；Pro 14 待接入（T9）
+- **状态**：三台全部接入（T1–T10 ✅，2026-08-25）；遗留：Pro 14 的 Windows App 待 App Store 登录后 `mas install 1295203466` 补装
 
 ---
 

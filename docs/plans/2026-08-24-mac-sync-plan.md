@@ -272,6 +272,7 @@ git add -A && git commit -m "feat: 共享 ~/.claude/CLAUDE.md 长期记忆" && g
 
 **机器：** Pro 14（hostname 占位 `<hostname3>`）
 **依赖：** 拿到该机 `scutil --get LocalHostName`
+**状态：** ✅ 已完成（2026-08-25，hostname = `MacBookPro14`，在 Pro 14 上由 Claude 会话执行）
 
 **Step 1:** 采集快照
 ```bash
@@ -293,7 +294,16 @@ cd ~/.local/share/chezmoi && git add -A && git commit -m "feat: 接入 Pro 14 (<
 
 **Step 4:** 在 Pro 14 上走 T5 流程（chezmoi init --apply + brew bundle + mise install + refresh-dev）
 
-- [ ] T9 完成（Pro 14 hostname：__________）
+- [x] T9 完成（Pro 14 hostname：`MacBookPro14`）
+
+**T9 执行实录（要点，供下次接机参考）：**
+- 专属清单（用户确认）：formula `cmake/llvm/rust/protobuf/pipx/yt-dlp/copilot`；cask `github-copilot-for-xcode/miniforge/warp/ghostty`；`dot_zprofile.local.tmpl` 加 miniforge condabin 条件 PATH
+- **坑 1（新机器必踩）**：`scutil --get HostName` 未设置（只有 LocalHostName）→ `hostname`/chezmoi 拿到默认值 `Mac`，模板分支全不匹配、Brewfile 渲染不出专属段。修复 `sudo scutil --set HostName MacBookPro14`，已补进 manual §0.1
+- **坑 2**：Homebrew 5.x `brew bundle` 预检用 API 解析全部条目，第三方 tap 未克隆时 cpolar/open-island 报 "No available formula" 整体失败（tap 声明在文件头也没用）。先手动 `brew tap` 全部第三方 tap 再跑 bundle。已补进 manual §6
+- **core 修复（dotfiles 已推送）**：删废弃 tap `homebrew/services`；注释 `open-island`（cask 全源消失）、`cc-switch`（3.15 限 Monterey）、`redis` cask（限 Sonoma）—— macOS 26 装不了，均留注记；bash_profile `~/.local/bin/env` 加守卫
+- **遗留（唯一未闭环）**：`mas install 1295203466`（Windows App）报 MASError 5，需先在 App Store 图形界面登录再重试；另 mas 2.2.2 与 brew bundle 的 `mas get` 调用不兼容（mas 单独用没问题）
+- 退役：nvm/powerlevel10k/zsh-autosuggestions formula 卸载（复查无级联损伤）；`~/.nvm` 空目录已删；npm 全局 `n` 已卸；`/usr/local/bin/node` 旧副本按用户决定保留（mise shims 优先级压住）
+- 运行时与 mini 完全一致：node 24.19.0 / python 3.12.14 / temurin-21.0.12+8.0.LTS（含 /Library/Java JVM 软链）；refresh-dev `==> done`；T10 本机各项通过（clean-env 零残留、chezmoi diff 空、shell 生态 ok）
 
 ---
 
@@ -327,7 +337,7 @@ chezmoi diff ~/.Brewfile ~/.zshrc ~/.zprofile ~/.claude/CLAUDE.md 2>/dev/null | 
 ls ~/.zshrc.backup ~/.zprofile.bak ~/new-zshrc ~/old-zshrc ~/.nvm ~/.pyenv ~/.jenv 2>/dev/null   # 应无输出
 ```
 
-- [x] T10 完成（Mini ✅ 本次；Pro 13 ✅ T5/T6 末尾等效验证；Pro 14 待 T9 后补跑）
+- [x] T10 完成（Mini ✅ 本次；Pro 13 ✅ T5/T6 末尾等效验证；Pro 14 ✅ T9 内完成等效验收，仅 Windows App 待 App Store 登录后补装）
 
 ---
 
@@ -343,5 +353,5 @@ ls ~/.zshrc.backup ~/.zprofile.bak ~/new-zshrc ~/old-zshrc ~/.nvm ~/.pyenv ~/.je
 | T6 卸载+软链 | Pro 13 | ✅ |
 | T7 oh-my-zsh bootstrap | 两台 | ✅ |
 | T8 CLAUDE.md 共享 | 两台 | ✅ |
-| T9 Pro 14 接入 | Pro 14 | ⏳（等 hostname） |
-| T10 全局验收 | 全部 | ✅（Mini+Pro 13；Pro 14 待 T9） |
+| T9 Pro 14 接入 | Pro 14 | ✅（2026-08-25；遗留：Windows App 待 App Store 登录补装） |
+| T10 全局验收 | 全部 | ✅（三台全过；Pro 14 见 T9 实录） |

@@ -20,13 +20,16 @@
 ### 0.1 系统前置（开箱后先做）
 
 1. 完成 macOS 初始设置，登录 Apple ID，**iCloud Drive 同步开启**（System Settings → Apple ID → iCloud → iCloud Drive 开）。
-2. 确认本机 hostname（用于 chezmoi 分流）：
+2. 确认本机 hostname（用于 chezmoi 分流）。**注意：三个名字都要查，`HostName` 未设置时 chezmoi 拿到的是默认值（如 `Mac`），模板分支全不匹配**（Pro 14 接入时实际踩过）：
    ```bash
-   scutil --get LocalHostName
+   scutil --get LocalHostName   # 如 MacBookPro14
+   scutil --get HostName        # 必须非 "not set"！
+   hostname                     # = chezmoi 实际读到的值
    ```
-   记下这个值。若需改名：
+   若 `HostName: not set` 或 `hostname` 与预期不符，补齐（需 sudo 密码）：
    ```bash
-   sudo scutil --set LocalHostName <新名字>
+   sudo scutil --set HostName <新名字>
+   sudo scutil --set LocalHostName <新名字>   # 已正确可跳过
    ```
 3. 装 Xcode Command Line Tools（Homebrew 依赖）：
    ```bash
@@ -194,7 +197,12 @@ brew bundle install --file ~/.Brewfile
 
 **Expected:** 安装各 formula/cask/mas；末尾 `Success` 或列出 `Succeeded: ...`。
 
-> 若提示 `mas` 需登录 App Store：打开 App Store 登录 Apple ID 后重跑。
+> **先 tap 后 bundle（Pro 14 踩坑）**：Homebrew 5.x 的 `brew bundle` 预检用 JSON API 解析全部条目，第三方 tap 尚未克隆时，tap 内的 formula/cask（cpolar、open-island 等）会报 `No available formula with the name ...` 并**整体失败**——即使 `tap` 声明写在 Brewfile 开头也没用。新机器先手动把第三方 tap 全部装上再跑 bundle：
+> ```bash
+> brew tap mongodb/brew redis/redis exolnet/deprecated farion1231/ccswitch anomalyco/tap probezy/core sunnyyoung/tap
+> ```
+
+> 若提示 `mas` 需登录 App Store：打开 App Store 登录 Apple ID 后重跑。**mas 直装失败（MASError 5）时先在 App Store 图形界面完成一次登录**；另注意 mas 2.x 与 `brew bundle` 的 `mas get` 调用不兼容（bundle 里 mas 条目可能误报失败，单独 `mas install <id>` 验证）。
 > 某些 cask（如 wechattweak-cli）可能需手动确认。
 
 验证：
