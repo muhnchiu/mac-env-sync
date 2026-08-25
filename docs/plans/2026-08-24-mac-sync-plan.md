@@ -325,9 +325,9 @@ ls ~/.zshrc.backup ~/.zprofile.bak ~/new-zshrc ~/old-zshup 2>/dev/null   # 应�
 | T1 refresh-dev | Mac mini | ✅ |
 | T2 php 决策 | Mac mini | ✅ |
 | T3 卸载退役 formula | Mac mini | ✅（含数据目录清理） |
-| T4 快照+备份 | MacBook Pro 13 | ⏳ |
-| T5 拉取+应用 | MacBook Pro 13 | ⏳ |
-| T6 卸载+软链 | MacBook Pro 13 | ⏳ |
+| T4 快照+备份 | MacBook Pro 13 | ✅ |
+| T5 拉取+应用 | MacBook Pro 13 | ✅ |
+| T6 卸载+软链 | MacBook Pro 13 | ⚠️(~/.nvm 402M root 属主待 sudo 删) |
 | T7 oh-my-zsh bootstrap | 两台 | ⏳ |
 | T8 CLAUDE.md 共享 | 两台 | ✅ |
 | T9 M4 Pro 接入 | M4 Pro | ⏳（等 hostname） |

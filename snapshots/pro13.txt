@@ -1,0 +1,485 @@
+
+########## hostname ##########
+MacBookPro13
+MacBookPro13
+macbookpro13
+
+########## macOS version ##########
+ProductName:		macOS
+ProductVersion:		26.5.2
+BuildVersion:		25F84
+
+########## arch ##########
+arm64
+
+########## brew formulae ##########
+antidote
+aom
+autoconf
+bash
+bat
+brotli
+ca-certificates
+cairo
+chezmoi
+cmake
+cpolar
+curl
+dav1d
+direnv
+eza
+fd
+ffmpeg
+fontconfig
+freetds
+freetype
+fribidi
+fzf
+gcc
+gd
+gdbm
+gdk-pixbuf
+gettext
+gh
+giflib
+git
+git-delta
+git-filter-repo
+glib
+gmp
+gnupg
+gnutls
+go
+gpgme
+gpgmepp
+graphite2
+graphviz
+gts
+harfbuzz
+highway
+icu4c@76
+icu4c@77
+icu4c@78
+imath
+isl
+jasper
+jenv
+jmeter
+jpeg-turbo
+jpeg-xl
+json-c
+krb5
+lame
+lazydocker
+lazygit
+libassuan
+libavif
+libdeflate
+libevent
+libgcrypt
+libgit2
+libgpg-error
+libidn2
+libksba
+libmpc
+libnghttp2
+libomp
+libpng
+libpq
+librsvg
+libssh2
+libtasn1
+libtiff
+libtool
+libunistring
+libusb
+libuv
+libvmaf
+libvpx
+libx11
+libxau
+libxcb
+libxdmcp
+libxext
+libxrender
+libzip
+little-cms2
+llhttp
+llvm@18
+lpeg
+luajit
+luv
+lz4
+lzo
+m4
+macmon
+mas
+maven
+mpdecimal
+mpfr
+ncurses
+neovim
+netpbm
+nettle
+nginx
+npth
+nspr
+nss
+nvm
+oniguruma
+opencode
+openexr
+openjdk
+openjdk@17
+openjdk@21
+openjpeg
+openldap
+openssl@1.1
+openssl@3
+opus
+p11-kit
+pango
+pcre2
+php@7.2
+pinentry
+pixman
+pkgconf
+poppler
+postgresql@18
+pyenv
+python@3.12
+python@3.13
+python@3.14
+python@3.9
+ranger
+readline
+reattach-to-user-namespace
+ripgrep
+rtmpdump
+sdl2
+sqlite
+starship
+svt-av1
+tmux
+tree-sitter
+unibilium
+unixodbc
+utf8proc
+webp
+wget
+x264
+x265
+xdebug@5.6
+xorgproto
+xz
+zoxide
+zstd
+
+########## brew casks ##########
+azure-cli-preview
+cc-switch
+copyq
+lulu
+ngrok
+open-island
+redis
+sequel-ace
+wechattweak-cli
+
+########## brew taps ##########
+anomalyco/tap
+azure/azure-cli
+exolnet/deprecated
+farion1231/ccswitch
+homebrew/services
+mongodb/brew
+probezy/core
+redis/redis
+shivammathur/extensions
+shivammathur/php
+sunnyyoung/tap
+
+########## brew leaves (顶层包) ##########
+antidote
+bat
+chezmoi
+cmake
+curl
+direnv
+eza
+fd
+ffmpeg
+freetds
+fzf
+gcc
+gh
+git
+git-delta
+git-filter-repo
+go
+graphviz
+jenv
+jmeter
+lazydocker
+lazygit
+libpq
+libzip
+macmon
+mas
+maven
+neovim
+nginx
+nvm
+opencode
+openjdk@17
+openldap
+openssl@1.1
+poppler
+postgresql@18
+pyenv
+python@3.9
+ranger
+reattach-to-user-namespace
+ripgrep
+starship
+tmux
+wget
+zoxide
+
+########## mas (App Store apps) ##########
+ 409183694  Keynote讲演  (14.5)
+ 409201541  Pages文稿    (14.5)
+ 409203825  Numbers表格  (14.5)
+1295203466  Windows App  (11.3.8)
+
+########## /Applications ##########
+淘宝开发者工具.app
+微信支付商户平台证书工具.app
+Alfred 5.app
+AnyDesk.app
+Apifox 企业版.app
+AweSun.app
+Caesium Image Compressor.app
+Cakebrew.app
+CC Switch.app
+ChatGPT.app
+Clash Verge.app
+ClashX Pro.app
+CleanMyMac X.app
+Cogito.app
+ColorSnapper2.app
+CopyQ.app
+cosbrowser.app
+DaisyDisk.app
+DBeaver.app
+DBX.app
+DingTalk.app
+EasyConnect.app
+Filo.app
+Ghostty.app
+GLPI-Agent
+Google Chrome.app
+iTerm.app
+Kaleidoscope.app
+Kap.app
+Keka.app
+Keynote.app
+logioptionsplus.app
+Magic Battery.app
+marktext.app
+MarkViewer.app
+Microsoft Edge.app
+Microsoft Remote Desktop.app
+Microsoft Teams.app
+Monitoring Helper.app
+NeteaseMusic.app
+Numbers.app
+Obsidian.app
+Open Island.app
+oss-browser.app
+Pages.app
+Postman.app
+PrinterClient.app
+Proxyman.app
+Python 2.7
+Rectangle.app
+Safari.app
+SecureFX.app
+Shottr.app
+Sourcetree.app
+Sublime Text.app
+SwitchHosts.app
+Tencent Lemon.app
+TencentMeeting.app
+ToDesk.app
+Transmit.app
+Utilities
+Visual Studio Code - Insiders.app
+WeChat.app
+wechatwebdevtools.app
+Windows App.app
+wpsoffice.app
+
+########## ~/Applications ##########
+asr
+Chrome Apps.localized
+Claude Code URL Handler.app
+com.chitaner.Longshot
+Edge Apps.localized
+JetBrains Toolbox
+
+########## mise tools ##########
+(未安装: mise)
+
+########## PATH ##########
+/Users/qiuwenbo/.opencode/bin
+/usr/local/lib/node_modules/bin
+/Users/qiuwenbo/.local/bin
+/Users/qiuwenbo/.bun/bin
+/Users/qiuwenbo/.nvm/versions/node/v22.14.0/bin
+/Users/qiuwenbo/.pyenv/shims
+/Users/qiuwenbo/.pyenv/bin
+/usr/local/mysql/bin
+/opt/homebrew/opt/mysql@5.7/bin
+/usr/local/apache-maven-3.9.12/bin
+/opt/homebrew/opt/openjdk@17/bin
+/opt/homebrew/sbin
+/opt/homebrew/bin
+/Library/Frameworks/Python.framework/Versions/2.7/bin
+/usr/local/bin
+/System/Cryptexes/App/usr/bin
+/usr/bin
+/bin
+/usr/sbin
+/sbin
+/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin
+/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin
+/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
+/pkg/env/global/bin
+/Library/Apple/usr/bin
+/usr/local/share/dotnet
+~/.dotnet/tools
+/Applications/Ghostty.app/Contents/MacOS
+/Applications/Obsidian.app/Contents/MacOS
+/Users/qiuwenbo/go/bin
+/Users/qiuwenbo/.claude/plugins/cache/claude-plugins-official/frontend-design/4a3e6565eae0/bin
+/Users/qiuwenbo/.claude/plugins/cache/superpowers-marketplace/superpowers/4.0.3/bin
+/Users/qiuwenbo/.claude/plugins/cache/claude-code-warp/warp/2.1.0/bin
+
+########## shells ##########
+# List of acceptable shells for chpass(1).
+# Ftpd will not allow users to connect who are not using
+# one of these shells.
+
+/bin/bash
+/bin/csh
+/bin/dash
+/bin/ksh
+/bin/sh
+/bin/tcsh
+/bin/zsh
+default shell: /bin/zsh
+
+########## node global ##########
+
+├── @agentclientprotocol/claude-agent-acp@0.62.0
+├── @openai/codex@0.142.1
+├── @types/node@26.0.1
+├── corepack@0.31.0
+├── cross-env@10.1.0
+├── depcheck@1.4.7
+├── npm-check-updates@22.2.7
+├── npm@10.9.2
+├── nrm@2.1.0
+├── pnpm@11.9.0
+├── serve@14.2.6
+├── ts-node@10.9.2
+├── typescript@6.0.3
+└── yarn@1.22.22
+/Users/qiuwenbo/.nvm/versions/node/v22.14.0/lib
+
+########## python ##########
+Python 3.11.9
+bcrypt==5.0.0
+et_xmlfile==2.0.0
+openpyxl==3.1.5
+pip==24.0
+pymupdf==1.28.0
+setuptools==65.5.0
+
+########## dotfiles in $HOME ##########
+.babel.7.9.0.development.json
+.bash_history
+.bash_profile
+.CFUserTextEncoding
+.chost
+.claude.json
+.claude.json.backup
+.claude.json.backup.1775613140590
+.claude.json.backup.1775613148287
+.claude.json.backup.1775613148291
+.claude.json.backup.1775613188622
+.claude.json.backup.1775613189176
+.cnpmrc
+.device_id
+.DS_Store
+.gitconfig
+.gitflow_export
+.gitignore_global
+.hgignore_global
+.hyper.js
+.jetbrains.vmoptions.sh
+.lesshst
+.lmstudio-home-pointer
+.myBase7.ini
+.node_repl_history
+.npmrc
+.p10k.zsh
+.pearrc
+.profile
+.psql_history
+.rediscli_history
+.stCommitMsg
+.username
+.v8flags.5.0.71.52.0c99b1993a158d6cb83e1700e9704bcd.json
+.v8flags.6.0.286.52.0c99b1993a158d6cb83e1700e9704bcd.json
+.v8flags.6.2.414.50.0c99b1993a158d6cb83e1700e9704bcd.json
+.v8flags.6.6.346.24-node.5.0c99b1993a158d6cb83e1700e9704bcd.json
+.v8flags.6.8.275.32-node.59.0c99b1993a158d6cb83e1700e9704bcd.json
+.v8flags.8.4.371.19-node.17.0c99b1993a158d6cb83e1700e9704bcd.json
+.v8flags.8.4.371.19-node.18.0c99b1993a158d6cb83e1700e9704bcd.json
+.v8flags.8.4.371.19-node.18.63a9f0ea7bb98050796b649e85481845.json
+.v8flags.8.4.371.23-node.63.0c99b1993a158d6cb83e1700e9704bcd.json
+.viminfo
+.wakatime-internal.cfg
+.wakatime.cfg
+.wakatime.db
+.wakatime.log
+.wezterm.lua
+.wget-hsts
+.yarnrc
+.z
+.zcompdump
+.zcompdump-MacBookPro13-5.9
+.zcompdump-MacBookPro13-5.9.macbookpro13.2853
+.zcompdump-MacBookPro13-5.9.macbookpro13.3290
+.zcompdump-MacBookPro13-5.9.macbookpro13.57918
+.zcompdump.macbookpro13.16010
+.zcompdump.macbookpro13.16972
+.zcompdump.macbookpro13.17947
+.zcompdump.macbookpro13.2824
+.zcompdump.macbookpro13.35548
+.zcompdump.macbookpro13.52072
+.zprofile
+.zprofile.bak
+.zprofile.pysave
+.zsh_history
+.zshrc
+Documents/com~apple~CloudDocs
+jmeter.log
+new-zshrc
+nohup.out
+old-zshrc
+
+########## done ##########
+snapshot complete on macbookpro13
