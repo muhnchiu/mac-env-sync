@@ -326,7 +326,7 @@ chezmoi diff ~/.Brewfile ~/.zshrc ~/.zprofile ~/.claude/CLAUDE.md 2>/dev/null | 
 ls ~/.zshrc.backup ~/.zprofile.bak ~/new-zshrc ~/old-zshrc ~/.nvm ~/.pyenv ~/.jenv 2>/dev/null   # 应无输出
 ```
 
-- [ ] T10 完成
+- [x] T10 完成（Mini ✅ 本次；Pro 13 ✅ T5/T6 末尾等效验证；Pro 14 待 T9 后补跑）
 
 ---
 
@@ -343,4 +343,4 @@ ls ~/.zshrc.backup ~/.zprofile.bak ~/new-zshrc ~/old-zshrc ~/.nvm ~/.pyenv ~/.je
 | T7 oh-my-zsh bootstrap | 两台 | ✅ |
 | T8 CLAUDE.md 共享 | 两台 | ✅ |
 | T9 Pro 14 接入 | Pro 14 | ⏳（等 hostname） |
-| T10 全局验收 | 全部 | ⏳ |
+| T10 全局验收 | 全部 | ✅（Mini+Pro 13；Pro 14 待 T9） |
