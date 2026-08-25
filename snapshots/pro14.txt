@@ -1,0 +1,265 @@
+
+########## hostname ##########
+MacBookPro14
+MacBookPro14
+Mac
+
+########## macOS version ##########
+ProductName:		macOS
+ProductVersion:		26.6.2
+BuildVersion:		25G83
+
+########## arch ##########
+arm64
+
+########## brew formulae ##########
+abseil
+ca-certificates
+cairo
+certifi
+cmake
+copilot
+fontconfig
+freetype
+gdbm
+gettext
+gh
+giflib
+git
+glib
+graphite2
+harfbuzz
+icu4c@77
+jpeg-turbo
+libgit2
+libidn2
+libpng
+libssh2
+libtiff
+libunistring
+libx11
+libxau
+libxcb
+libxdmcp
+libxext
+libxrender
+little-cms2
+llvm
+lz4
+lzo
+macmon
+maven
+mpdecimal
+nvm
+openjdk
+openssl@3
+pcre2
+pipx
+pixman
+pkgconf
+powerlevel10k
+protobuf
+python@3.10
+python@3.12
+python@3.13
+readline
+rust
+sqlite
+wget
+xorgproto
+xz
+yt-dlp
+z3
+zsh-autosuggestions
+zstd
+
+########## brew casks ##########
+cc-switch
+ghostty
+github-copilot-for-xcode
+miniforge
+warp
+
+########## brew taps ##########
+farion1231/ccswitch
+
+########## brew leaves (顶层包) ##########
+cmake
+copilot
+gh
+git
+macmon
+maven
+nvm
+pipx
+powerlevel10k
+protobuf
+python@3.10
+python@3.12
+rust
+wget
+yt-dlp
+zsh-autosuggestions
+
+########## mas (App Store apps) ##########
+(未安装: mas, 可 brew install mas)
+
+########## /Applications ##########
+哔哩哔哩.app
+115Browser.app
+Adobe Activation Tool.app
+Adobe Downloader.app
+Adobe Lightroom Classic
+Alfred 5.app
+AnyDesk.app
+AnyGo.app
+BaiduNetdisk_mac.app
+Cakebrew.app
+CC Switch.app
+Cherry Studio.app
+Clash Verge.app
+ClashX Pro.app
+CleanMyMac_5.app
+Codex.app
+DaisyDisk.app
+DBX.app
+DeepL.app
+DingTalk.app
+Downie 4.app
+EasyConnect.app
+EdgeView.app
+Final Cut Pro.app
+Folx GO+.app
+GarageBand.app
+Ghostty.app
+Google Chrome.app
+IINA.app
+iMovie.app
+IntelliJ IDEA.app
+iTerm.app
+iTermAI.app
+Keka.app
+Keynote.app
+LM Studio.app
+Longshot.app
+Microsoft Edge.app
+Motrix.app
+Navicat Premium.app
+NeteaseMusic.app
+Numbers.app
+Obsidian.app
+Ollama.app
+OmniRecorder.app
+Open Island.app
+oss-browser2.app
+Pages.app
+Quark.app
+Safari.app
+Setapp
+Sublime Text.app
+SwitchHosts.app
+Utilities
+VideoFusion-macOS.app
+Visual Studio Code - Insiders.app
+Visual Studio Code.app
+Warp.app
+WeChat.app
+wechatwebdevtools.app
+WindTerm.app
+Xcode.app
+
+########## ~/Applications ##########
+asr
+Chrome Apps.localized
+Claude Code URL Handler.app
+com.chitaner.Longshot
+Edge Apps.localized
+
+########## mise tools ##########
+(未安装: mise)
+
+########## PATH ##########
+/Users/qiuwenbo/.bun/bin
+/Users/muhn/.antigravity/antigravity/bin
+/Users/qiuwenbo/.local/bin
+/opt/homebrew/sbin
+/opt/homebrew/bin
+/opt/homebrew/Caskroom/miniforge/base/condabin
+/opt/homebrew/bin
+/opt/homebrew/sbin
+/usr/local/bin
+/System/Cryptexes/App/usr/bin
+/usr/bin
+/bin
+/usr/sbin
+/sbin
+/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin
+/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin
+/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
+/pkg/env/global/bin
+/Library/Apple/usr/bin
+/Applications/Ghostty.app/Contents/MacOS
+
+########## shells ##########
+# List of acceptable shells for chpass(1).
+# Ftpd will not allow users to connect who are not using
+# one of these shells.
+
+/bin/bash
+/bin/csh
+/bin/dash
+/bin/ksh
+/bin/sh
+/bin/tcsh
+/bin/zsh
+default shell: /bin/zsh
+
+########## node global ##########
+
+├── corepack@0.34.0
+├── n@10.1.0
+├── npm@11.7.0
+├── pekon-online-excel@
+├── pnpm@10.24.0
+└── whistle@2.9.98
+/usr/local/lib
+
+########## python ##########
+Python 3.13.3
+certifi==2025.4.26
+pip==25.1.1
+wheel==0.45.1
+
+########## dotfiles in $HOME ##########
+.bash_history
+.bash_profile
+.CFUserTextEncoding
+.claude.json
+.claude.json.backup
+.claude.json.backup.1780236074700
+.claude.json.backup.1780236074701
+.claude.json.backup.1780236074702
+.claude.json.backup.1780236074703
+.claude.json.backup.1780236075059
+.claude.json.corrupted.1768916265875
+.condarc
+.DS_Store
+.gitconfig
+.jetbrains.vmoptions.sh
+.npmrc
+.p10k.zsh
+.profile
+.viminfo
+.wakatime.cfg
+.z
+.zcompdump-MacBookPro14-5.9
+.zcompdump-MacBookPro14-5.9.zwc
+.zprofile
+.zsh_history
+.zshrc
+.zshrc.pre-oh-my-zsh
+.zshrc.save
+Unicode.ttf
+
+########## done ##########
+snapshot complete on Mac
