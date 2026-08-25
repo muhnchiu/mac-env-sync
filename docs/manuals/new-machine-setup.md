@@ -146,6 +146,8 @@ ls ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 
 > 若 oh-my-zsh install 脚本把默认 shell 改成 zsh：`chsh -s /bin/zsh`（如已是 zsh 可跳过）。
 
+> **提示符（starship）无需手动配**：starship 由 Brewfile 装，`~/.config/starship.toml` 已由 chezmoi 管理——`chezmoi init --apply` 后自动落地，各机提示符样式一致。`.zshrc` 里 `ZSH_THEME=""` + `eval "$(starship init zsh)"` 让 oh-my-zsh 只管插件、starship 管提示符。
+
 ---
 
 ## 5. 拉取 dotfiles 并应用（核心步骤）
