@@ -13,7 +13,7 @@
 | 机器 | hostname | 角色 | 定位 | 备注 |
 |---|---|---|---|---|
 | Mac mini | `MacMini` | **主编辑机**（primary） | 固定、常开、软件最全，作为 dotfiles 的"事实来源" | chezmoi source 在此首次编写并 push |
-| Pro 13 | `MacBookPro13` | 辅机（auxiliary） | 便携 + 远控，从仓库同步 | GnuPG 链 / postgresql@18 / 远控工具 |
+| Pro 13 | `MacBookPro13` | 辅机（auxiliary） | 便携 + 远控，从仓库同步 | GnuPG 链 / postgresql@18 / php@5.6 / 远控工具 |
 | Pro 14 | `<hostname3>`（待定） | 辅机（auxiliary） | 便携高性能，从仓库同步 | 新增机器，hostname 确定后填 |
 
 ### "主编辑机"是什么意思
@@ -81,7 +81,7 @@ git remote add origin git@github.com:<github-user>/dotfiles.git
 
 # 3) 按设计文档第 3/4/5/6 节，在 source 目录里创建文件结构（dot_ 文件放根，映射 $HOME）：
 #    dot_zprofile.tmpl  dot_zshrc  dot_zprofile.local.tmpl
-#    dot_Brewfile.tmpl  dot_config/mise/config.toml  dot_config/claude/...
+#    dot_Brewfile.tmpl  dot_config/mise/config.toml  dot_claude/CLAUDE.md
 #    shared/Brewfile.core  shared/Brewfile.MacMini  shared/Brewfile.MacBookPro13
 #    shared/npm-global.txt  shared/pip-core.txt  shared/bin/refresh-dev
 #    shared/machines.toml   .chezmoiignore（含 shared）   .gitignore
@@ -142,11 +142,11 @@ claude --resume
 
 ```bash
 # 1) 先采集快照，产出差异（在主编辑机上对比）
-bash "/Users/<username>/workspace/mac-env-sync/scripts/mac-snapshot.sh" > m4pro.txt
+bash "/Users/<username>/workspace/mac-env-sync/scripts/mac-snapshot.sh" > pro14.txt
 #   或直接走 iCloud 路径：
-bash ~/Library/Mobile\ Documents/com~apple~CloudDocs/mac-env-sync/scripts/mac-snapshot.sh > m4pro.txt
+bash ~/Library/Mobile\ Documents/com~apple~CloudDocs/mac-env-sync/scripts/mac-snapshot.sh > pro14.txt
 
-# 2) 对照已有 mini.txt / pro.txt，确定 Pro 14 专属要装什么，
+# 2) 对照已有 snapshots/mini.txt / snapshots/pro13.txt，确定 Pro 14 专属要装什么，
 #    在 dotfiles 仓库新增 shared/Brewfile.<hostname3>，
 #    在 dot_Brewfile.tmpl 加一个 else if 分支，
 #    在 dot_zprofile.local.tmpl 加一个 hostname 分支（若有独有 PATH），
@@ -216,7 +216,7 @@ chezmoi update          # = git pull + apply
 # 改 ~/.local/share/chezmoi/dot_config/mise/config.toml 的 [tools]
 chezmoi apply -v
 mise install          # 装新版本
-refresh-dev           # 重建全局包
+~/.local/share/chezmoi/shared/bin/refresh-dev   # 重建全局包
 ```
 
 ### 验收检查（随时跑）
@@ -266,8 +266,11 @@ mac-env-sync/
 │   └── manuals/
 │       ├── chezmoi-guide.md                 # chezmoi 操作指南（机制/命令/模板/同步/坑）
 │       └── new-machine-setup.md            # 新机操作手册（从装 chezmoi 起的详细步骤）
-└── scripts/
-    └── mac-snapshot.sh                # 环境采集脚本（多机差异对比）
+├── scripts/
+│   └── mac-snapshot.sh                # 环境采集脚本（多机差异对比）
+└── snapshots/
+    ├── mini.txt                       # Mac mini 现状快照（基线/差异对比用）
+    └── pro13.txt                      # Pro 13 迁移前快照
 ```
 
 > 实际配置仓库（`dotfiles`）的结构见设计文档第 3 节，不在此项目内。

@@ -8,7 +8,7 @@
   - Pro 14（hostname 待定，下文以 `<hostname3>` 占位）
 - **基线**：均为 arm64 / macOS 26.x / 用户 `<username>`；框架不限机器数量，新增机器只需追加一台专属配置，不改共享核心。
 - **一致性目标**：共享核心 + 各机保留差异（非镜像）
-- **状态**：待执行
+- **状态**：Mac mini / Pro 13 已完成迁移（T1–T8 ✅，2026-08-25）；Pro 14 待接入（T9）
 
 ---
 
@@ -16,7 +16,7 @@
 
 配置完一台 Mac，需要在其它机器上重复配置；环境差异时还要单独排查。希望用一套版本化的配置让**任意多台**机器收敛到"共享核心 + 显式声明的差异"，换机/重装可一条龙复刻。新增机器时只追加该机专属配置、不改动共享核心。
 
-当前已对比过 Mac mini 与 Pro 13（产物 `mini.txt` / `pro.txt`），主要差异点（作为设计依据的实例）：
+当前已对比过 Mac mini 与 Pro 13（产物 `snapshots/mini.txt` / `snapshots/pro13.txt`），主要差异点（作为设计依据的实例）：
 
 | 维度 | Mac mini | Pro 13 |
 |---|---|---|
@@ -39,7 +39,7 @@
 三个子系统各司其职：
 
 1. **dotfiles 仓库**（git，GitHub 私有仓库 `<github-user>/dotfiles`）——由 **chezmoi** 管理。承载所有"人写、稳定"的配置与版本声明文件。
-2. **分层 Brewfile**——拆 `Brewfile.core` / `Brewfile.mini` / `Brewfile.pro`，chezmoi 按 hostname 渲染入口 `~/.Brewfile`。
+2. **分层 Brewfile**——拆 `Brewfile.core` / `Brewfile.MacMini` / `Brewfile.MacBookPro13`（按 hostname 命名），chezmoi 按 hostname 渲染入口 `~/.Brewfile`。
 3. **iCloud 同步的 `~/.claude` 记忆**——会话 jsonl 频繁变动，走 iCloud 软链，实现跨机续接思考；不进 git。
 
 **运行时统一性**：由 **mise** 接管 node + python + java，退役 nvm / pyenv / jenv 三个工具。PATH 用"条件化追加"保证同一份 shell 配置在任意台机器都跑得通。
@@ -58,7 +58,6 @@ dotfiles/                         # chezmoi source = git 仓库（GitHub 私有�
 ├── dot_zshrc                      # 交互 shell（prompt/fzf/zoxide/别名，共享）
 ├── dot_zprofile.local.tmpl        # 按 hostname 渲染该机独有的 PATH/环境
 ├── dot_gitconfig.tmpl             # 按机器的 user/email 差异
-├── dot_p10k.zsh
 ├── dot_wezterm.lua
 ├── dot_npmrc
 ├── dot_cnpmrc
@@ -67,10 +66,10 @@ dotfiles/                         # chezmoi source = git 仓库（GitHub 私有�
 ├── dot_config/                    # → ~/.config/
 │   ├── mise/config.toml           # node/python/java 默认版本（共享）
 │   ├── nvim/                      # Neovim 配置
-│   ├── ghostty/                   # Ghostty 配置
-│   └── claude/
-│       ├── CLAUDE.md              # 用户级长期记忆（共享）
-│       └── settings.json          # Claude Code 设置（共享）
+│   └── ghostty/                   # Ghostty 配置
+├── dot_claude/                    # → ~/.claude/（Claude Code 实读 ~/.claude/CLAUDE.md，非 ~/.config/claude/）
+│   ├── CLAUDE.md                  # 用户级长期记忆（共享）
+│   └── settings.json              # Claude Code 设置（共享）
 └── shared/                        # 数据目录，不渲染到 $HOME（靠 .chezmoiignore 排除；模板用 {{ include }} 读取）
     ├── machines.toml              # 已知机器清单（文档化，见 3.1）
     ├── Brewfile.core              # 共用
@@ -83,7 +82,7 @@ dotfiles/                         # chezmoi source = git 仓库（GitHub 私有�
 > **为什么 dot_ 文件在 source 根、`shared/` 却要 ignore？** chezmoi 把 source 根直接映射 `$HOME`：`dot_zshrc` 在根 → `~/.zshrc`；若放进 `home/` 子目录会渲染成 `~/home/.zshrc`（错误）。`shared/` 不该落进 `$HOME`，故写进 `.chezmoiignore` 排除；但 `dot_Brewfile.tmpl` 里的 `{{ include "shared/..." }}` 直接从 source 读文件，不受 ignore 影响——分层清单拼装照常生效。详见 `docs/manuals/chezmoi-guide.md` §1/§3/§11。
 
 **chezmoi 关键机制**：
-- hostname 分流：模板内 `{{- if eq .chezmoi.hostname "MacMini" -}} ... {{- end -}}`
+- hostname 分流：模板内 `{{- if eq (lower .chezmoi.hostname) "macmini" -}} ... {{- end -}}`（用 `lower` 比较——macOS 会把 `hostname -s` 小写化，如 Pro 13 报 `macbookpro13`，直比 `MacBookPro13` 会落空）
 - 敏感文件：文件名加 `private_` 前缀 → 渲染后自动 `chmod 600`
 - `.chezmoiignore`：按 hostname 忽略对方专属文件
 - 模板文件用 `.tmpl` 后缀，chezmoi 自动渲染
@@ -125,7 +124,7 @@ notes    = "新增机器示例"
 [tools]
 node    = "24"
 python  = "3.12"
-java    = "temurin@21"
+java    = "temurin-21"
 
 [settings]
 experimental = true
@@ -183,21 +182,27 @@ experimental = true
 
 ```bash
 #!/usr/bin/env bash
-# 装好新 node/python 后重建全局包
+# 装好新 node/python 后重建全局包。强制用 mise 运行时（mise exec），不依赖 ambient PATH。
 set -euo pipefail
 REPO="$(chezmoi source-path 2>/dev/null || echo "$HOME/.local/share/chezmoi")"
 SHARED="$REPO/shared"
-HOST="$(hostname -s)"
+# 用 chezmoi 的 hostname（与 Brewfile 分流键一致）；macOS `hostname -s` 会小写化（macbookpro13），
+# 与按 chezmoi hostname 命名的 pip-<host>.txt 大小写不一致——APFS 默认大小写不敏感能侥幸匹配，
+# 大小写敏感 FS 上会落空。优先取 chezmoi data 的权威值，回退 hostname -s。
+HOST="$(chezmoi data 2>/dev/null | grep -o '"hostname": "[^"]*"' | head -1 | sed 's/.*"hostname": "//;s/"$//')"
+[[ -z "$HOST" ]] && HOST="$(hostname -s)"
 
-echo "==> npm 全局包"
-xargs -a "$SHARED/npm-global.txt" -I{} npm install -g {} || true
+echo "==> npm 全局包（mise node）"
+mise exec node -- npm --version >/dev/null 2>&1 && \
+  xargs -a "$SHARED/npm-global.txt" -I{} mise exec node -- npm install -g {} || true
 
-echo "==> python 核心 pip 包"
-python -m pip install -r "$SHARED/pip-core.txt" || true
+echo "==> python 核心 pip 包（mise python）"
+mise exec python -- python --version >/dev/null 2>&1 && \
+  mise exec python -- python -m pip install -r "$SHARED/pip-core.txt" || true
 
-echo "==> 机器专属 pip 包（如存在 pip-<hostname>.txt）"
-[[ -f "$SHARED/pip-$HOST.txt" ]] \
-  && python -m pip install -r "$SHARED/pip-$HOST.txt" || true
+echo "==> 机器专属 pip 包（pip-<host>.txt 存在则装）"
+[[ -f "$SHARED/pip-$HOST.txt" ]] && mise exec python -- python --version >/dev/null 2>&1 && \
+  mise exec python -- python -m pip install -r "$SHARED/pip-$HOST.txt" || true
 
 echo "==> done"
 ```
@@ -225,7 +230,7 @@ typeset -U path
 [[ -d $HOME/.opencode/bin ]]          && path=($HOME/.opencode/bin $path)
 [[ -d $HOME/.go/bin ]]                && path=($HOME/.go/bin $path)
 [[ -d /opt/homebrew/opt/openjdk@17/bin ]] && path=(/opt/homebrew/opt/openjdk@17/bin $path)
-[[ -d /opt/homebrew/opt/php@7.2/bin ]]    && path=(/opt/homebrew/opt/php@7.2/bin $path)
+[[ -d /opt/homebrew/opt/php@5.6/bin ]]    && path=(/opt/homebrew/opt/php@5.6/bin $path)
 [[ -d /usr/local/mysql/bin ]]         && path=(/usr/local/mysql/bin $path)
 [[ -d /usr/local/apache-maven-3.9.12/bin ]] && path=(/usr/local/apache-maven-3.9.12/bin $path)
 
@@ -240,21 +245,22 @@ typeset -U path
 chezmoi 把它渲染到 `~/.zprofile.local`，由上面的 `source` 行加载。每台机器一个分支，新增机器加一个分支即可：
 
 ```zsh
-{{- if eq .chezmoi.hostname "MacMini" }}
+{{- if eq (lower .chezmoi.hostname) "macmini" }}
 [[ -d $HOME/.lmstudio/bin ]] && path=($HOME/.lmstudio/bin $path)
 [[ -d /Library/Java/JavaVirtualMachines/jdk-1.8.jdk/Contents/Home/bin ]] \
   && path=(/Library/Java/JavaVirtualMachines/jdk-1.8.jdk/Contents/Home/bin $path)
-{{- else if eq .chezmoi.hostname "MacBookPro13" }}
-# Pro 独有的 PATH 在此（当前无）
-{{- else if eq .chezmoi.hostname "<hostname3>" }}
-# 第三台（Pro 14）独有的 PATH 在此
+{{- else if eq (lower .chezmoi.hostname) "macbookpro13" }}
+# Pro 13 独有的 PATH 在此（当前无）
+{{- else if eq (lower .chezmoi.hostname) "<hostname3>" }}
+# Pro 14 独有的 PATH 在此
 {{- end }}
+```
 
 ### 5.2 `dot_zshrc`（交互 shell，所有机器一致）
 
 ```zsh
 # prompt
-eval "$(starship init zsh)"          # 或 source ~/.p10k.zsh + powerlevel10k
+eval "$(starship init zsh)"          # prompt（已弃用 powerlevel10k/p10k，统一 starship）
 
 # fzf / zoxide / eza
 [[ -r /opt/homebrew/opt/fzf/install ]] && source <(fzf --zsh)
@@ -278,7 +284,7 @@ rm -f ~/.zcompdump* ~/.v8flags.* ~/.DS_Store
 
 ## 6. 分层 Brewfile
 
-> 从 `mini.txt` / `pro.txt` 导出的实际差异，结合"共享核心"原则人工裁定。下面是**裁定后的清单**，非纯交集。命名按 `Brewfile.<hostname>`（每机一份专属），新增机器加一份对应文件即可。
+> 从 `snapshots/mini.txt` / `snapshots/pro13.txt` 导出的实际差异，结合"共享核心"原则人工裁定。下面是**裁定后的清单**，非纯交集。命名按 `Brewfile.<hostname>`（每机一份专属），新增机器加一份对应文件即可。
 
 ### 6.1 `shared/Brewfile.core`（所有机器共用）
 
@@ -341,7 +347,7 @@ cask "ngrok"
 cask "open-island"
 cask "redis"
 cask "sequel-ace"
-cask "wechattweak-cli"
+# cask "wechattweak-cli"  # cask 依赖 disabled depends_on macos: :sierra，当前 Homebrew 装不了；已装的保留
 
 # ===== mas 共用 =====
 mas "Keynote", id: 409183694
@@ -366,6 +372,9 @@ brew "fmt"
 brew "hdrhistogram_c"
 brew "nbytes"
 brew "uvwasi"
+
+# PHP 5.6（维护 PHP 5.5 老项目，shivammathur tap 提供的最接近版本；mise 不覆盖此遗留版本）
+brew "shivammathur/php/php@5.6"
 
 cask "antigravity-tools"
 
@@ -404,6 +413,9 @@ brew "direnv"
 brew "antidote"
 brew "bash"
 
+# PHP 5.6（维护 PHP 5.5 老项目，与 Mac mini 一致；mise 不覆盖此遗留版本）
+brew "shivammathur/php/php@5.6"
+
 cask "azure-cli-preview"
 ```
 
@@ -419,13 +431,14 @@ cask "azure-cli-preview"
 
 ```ruby
 # 由 chezmoi 渲染到 ~/.Brewfile
+# hostname 比较用 lower（macOS 会把 hostname -s 小写化，直比大小写敏感的 hostname 会落空）
 {{- include "shared/Brewfile.core" -}}
 
-{{- if eq .chezmoi.hostname "MacMini" -}}
+{{- if eq (lower .chezmoi.hostname) "macmini" -}}
 {{-   include "shared/Brewfile.MacMini" -}}
-{{- else if eq .chezmoi.hostname "MacBookPro13" -}}
+{{- else if eq (lower .chezmoi.hostname) "macbookpro13" -}}
 {{-   include "shared/Brewfile.MacBookPro13" -}}
-{{- else if eq .chezmoi.hostname "<hostname3>" -}}
+{{- else if eq (lower .chezmoi.hostname) "<hostname3>" -}}
 {{-   include "shared/Brewfile.<hostname3>" -}}
 {{- end -}}
 
@@ -480,7 +493,7 @@ brew uninstall nvm pyenv jenv node          # node formula 仅 Mini 有
 mise install            # 装齐 node/python/java
 
 # 3) 重建全局包
-~/.local/bin/refresh-dev
+~/.local/share/chezmoi/shared/bin/refresh-dev
 ```
 
 ### 8.3 依赖说明
@@ -512,7 +525,7 @@ brew bundle install --file ~/.Brewfile
 
 # 6. mise 装版本 + 重建全局包
 mise install
-refresh-dev
+~/.local/share/chezmoi/shared/bin/refresh-dev
 
 # 7. 续接思考
 claude --resume
@@ -524,19 +537,19 @@ claude --resume
 
 - **改配置**：编辑 chezmoi source（`chezmoi edit`）→ `chezmoi apply` → 提交 push。
 - **另一台同步**：`chezmoi update`（拉取 + apply）。
-- **新增 brew 包**：装完后 `brew bundle dump`，按归属追加到 `Brewfile.core/mini/pro`，提交。
+- **新增 brew 包**：装完后 `brew bundle dump`，按归属追加到 `Brewfile.core` / `Brewfile.MacMini` / `Brewfile.MacBookPro13`，提交。
 - **新增全局 npm/pip 包**：手动追加到 `npm-global.txt` / `pip-core.txt`，另一台 `refresh-dev`。
 
 ---
 
 ## 11. 执行顺序（建议分批，可勾选）
 
-- [ ] **阶段 0 · 准备**：GitHub 私有仓库 `<github-user>/dotfiles`（已就绪）；iCloud 可用（已就绪）；确定第三台（Pro 14）的 hostname。
-- [ ] **阶段 1 · 导出现状**：每台机器各跑第 8.1 节命令，留备份。
-- [ ] **阶段 2 · 建 dotfiles 仓库骨架**：先在一台（如 Mac mini）上 `chezmoi init`，按第 3 节建目录结构，填入第 4/5/6 节的配置文件与清单；在 `shared/machines.toml` 登记全部已知机器。
-- [ ] **阶段 3 · 首次 apply（首台）**：`chezmoi apply` → 验证 `.zshrc/.zprofile/mise 配置` 生效。
-- [ ] **阶段 4 · 退役旧工具（首台）**：跑第 8.2 节，`brew uninstall nvm pyenv jenv node` → `mise install` → `refresh-dev`。
-- [ ] **阶段 5 · 同步其余机器**：在每台其它机器上 `chezmoi init --apply git@github.com:<github-user>/dotfiles.git` → `brew bundle install --file ~/.Brewfile` → 第 4-5 步。新增机器前先跑 `mac-snapshot.sh`，按对比结果填该机专属 `Brewfile.<hostname>` 与 `.chezmoiignore`。
-- [ ] **阶段 6 · ~/.claude 记忆软链**：每台机器各跑第 7 节命令。
-- [ ] **阶段 7 · 清理噪声**：每台跑第 5.3 节清理命令；确认 `.gitignore` 生效。
-- [ ] **阶段 8 · 验收**：在任一台上 `claude --resume` 可见其它机器的会话；每台 `which node python java` 均指向 mise shims；`brew bundle check` 通过。
+- [x] **阶段 0 · 准备**：GitHub 私有仓库 `<github-user>/dotfiles`（已就绪）；iCloud 可用（已就绪）；确定第三台（Pro 14）的 hostname。
+- [x] **阶段 1 · 导出现状**：每台机器各跑第 8.1 节命令，留备份。
+- [x] **阶段 2 · 建 dotfiles 仓库骨架**：先在一台（如 Mac mini）上 `chezmoi init`，按第 3 节建目录结构，填入第 4/5/6 节的配置文件与清单；在 `shared/machines.toml` 登记全部已知机器。
+- [x] **阶段 3 · 首次 apply（首台）**：`chezmoi apply` → 验证 `.zshrc/.zprofile/mise 配置` 生效。
+- [x] **阶段 4 · 退役旧工具（首台）**：跑第 8.2 节，`brew uninstall nvm pyenv jenv node` → `mise install` → `refresh-dev`。
+- [~] **阶段 5 · 同步其余机器**（Pro 13 ✅；Pro 14 待 T9）：在每台其它机器上 `chezmoi init --apply git@github.com:<github-user>/dotfiles.git` → `brew bundle install --file ~/.Brewfile` → 第 4-5 步。新增机器前先跑 `mac-snapshot.sh`，按对比结果填该机专属 `Brewfile.<hostname>` 与 `.chezmoiignore`。
+- [x] **阶段 6 · ~/.claude 记忆软链**：每台机器各跑第 7 节命令。
+- [x] **阶段 7 · 清理噪声**：每台跑第 5.3 节清理命令；确认 `.gitignore` 生效。
+- [ ] **阶段 8 · 验收**（T10 待全局验收）：在任一台上 `claude --resume` 可见其它机器的会话；每台 `which node python java` 均指向 mise shims；`brew bundle check` 通过。

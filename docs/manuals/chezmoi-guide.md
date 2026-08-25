@@ -67,11 +67,13 @@ source 里的文件名前缀即语义，chezmoi 据此决定 target 的名字、
 ├── dot_gitconfig.tmpl             # 按机器 user/email
 ├── dot_Brewfile.tmpl              # 入口：include shared/Brewfile.core + 本机专属
 ├── private_dot_gitignore_global
-├── dot_p10k.zsh  dot_wezterm.lua  dot_npmrc  dot_cnpmrc
+├── dot_wezterm.lua  dot_npmrc  dot_cnpmrc
 ├── dot_config/                    # → ~/.config/
 │   ├── mise/config.toml           # node/python/java 默认版本（共享）
-│   ├── nvim/  ghostty/
-│   └── claude/CLAUDE.md  settings.json
+│   └── nvim/  ghostty/
+├── dot_claude/                    # → ~/.claude/（Claude Code 实读 ~/.claude/CLAUDE.md，非 ~/.config/claude/）
+│   ├── CLAUDE.md                  # 用户级长期记忆（共享）
+│   └── settings.json              # Claude Code 设置（共享）
 └── shared/                         # ⚠️ 数据目录，不渲染到 $HOME（靠 .chezmoiignore 排除）
     ├── machines.toml              # 机器注册表（文档用）
     ├── Brewfile.core              # 共用

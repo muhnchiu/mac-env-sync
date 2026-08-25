@@ -159,11 +159,11 @@ chezmoi init --apply git@github.com:<github-user>/dotfiles.git
 ```
 
 chezmoi 会按本机 hostname 渲染对应配置并写入 `$HOME`：
-- `~/.zshrc`、`~/.zprofile`、`~/.zprofile.local`、`~/.bash_profile`、`~/.gitconfig`、`~/.gitignore_global`、`~/.Brewfile`、`~/.config/mise/config.toml`
+- `~/.zshrc`、`~/.zprofile`、`~/.zprofile.local`、`~/.bash_profile`、`~/.gitconfig`、`~/.gitignore_global`、`~/.Brewfile`、`~/.config/mise/config.toml`、`~/.claude/CLAUDE.md`
 
 验证已落地：
 ```bash
-ls -la ~/.zshrc ~/.zprofile ~/.Brewfile ~/.config/mise/config.toml
+ls -la ~/.zshrc ~/.zprofile ~/.Brewfile ~/.config/mise/config.toml ~/.claude/CLAUDE.md
 ```
 
 > **apply 会覆盖现有 .zshrc/.zprofile**。若本机已有自定义配置想保留，先备份：
@@ -267,7 +267,7 @@ brew bundle check --file ~/.Brewfile
 # 4) 关键工具可用
 node -v; python3 --version; java -version 2>&1 | head -1
 mvn -v 2>&1 | head -1           # 若装了 maven
-php -v 2>&1 | head -1           # 若保留了 php@7.2
+php -v 2>&1 | head -1           # 若装了 php@5.6（维护 5.5 老项目的机器）
 
 # 5) shell 无报错加载
 zsh -l -i -c 'echo shell-ok'

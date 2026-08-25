@@ -59,7 +59,7 @@ pnpm -v; yarn -v; tsc -v; python3 -c "import pydantic, openpyxl; print('pip ok')
 cd ~/.local/share/chezmoi && git status   # 无变更则跳过 commit
 ```
 
-- [ ] T1 完成
+- [x] T1 完成
 
 ---
 
@@ -92,7 +92,7 @@ brew install php@7.2
 chezmoi apply -v && cd ~/.local/share/chezmoi && git add -A && git commit -m "tweak: php@7.2 决策" && git push
 ```
 
-- [ ] T2 完成（决策：__________）
+- [x] T2 完成（决策：php@5.6）
 
 ---
 
@@ -100,7 +100,7 @@ chezmoi apply -v && cd ~/.local/share/chezmoi && git add -A && git commit -m "tw
 
 **依赖：** T1 完成、shell 已用 mise 验证稳定一段时间
 **Files:** 无（`brew uninstall`）
-**状态：** ⚠️ formula 卸载完成 ✅；数据目录清理**延后**（见 Step 3 说明）
+**状态：** ✅ 已完成（formula 卸载 + 数据目录清理，2026-08-25）
 
 **Step 1:** 再次确认 shell 不依赖旧工具
 ```bash
@@ -120,10 +120,7 @@ brew uninstall nvm pyenv jenv node
 # 仅在确认无需回滚后执行；保留备份 ~/env-migration-backup/
 rm -rf ~/.nvm ~/.pyenv ~/.jenv
 ```
-**实际：延后未执行。** 原因：检测到运行中进程依赖 `~/.nvm`——
-- PID 52262 playwright test 跑在 `~/.nvm/versions/node/v24.19.0/bin/node`
-- PID 48975 openclaw gateway 加载 `~/.nvm/.../openclaw` 模块（且其用的 `/opt/homebrew/opt/node/bin/node` 是已卸的 brew node，进程半残，下次拉起会失败）
-共占 4.6G（nvm 3.2G + pyenv 1.4G + jenv 20K）。**等这些进程停掉、改用 mise node 重启后再删。** openclaw 需用 mise node 重装并重启（`mise exec node -- npm install -g openclaw` 或迁到 mise node 的全局）。
+**实际：** ✅ 已执行（2026-08-25）。openclaw 迁 mise node 后无进程依赖 `~/.nvm`；终止过期 playwright test-server 后 `rm -rf ~/.nvm ~/.pyenv ~/.jenv`，回收 ~4.6G（nvm 3.2G + pyenv 1.4G + jenv 20K）。Pro 13 同流程（`~/.nvm` 含 root 属主文件需 `sudo rm -rf`）。clean-env 验证 PATH 无 nvm/pyenv/jenv 残留。
 
 **Step 4:** 验证 shell 仍正常
 ```bash
@@ -132,7 +129,7 @@ zsh -l -i -c 'which node python3 java; mise current' | grep -v WARN
 **Expected:** 三者仍指向 mise，无 WARN。
 **实际：** ✅ node/python3/java 均指向 mise，`mise current` 无 WARN。
 
-- [ ] T3 完成（formula ✅；数据目录清理延后）
+- [x] T3 完成（formula ✅ + 数据目录清理 ✅）
 
 ---
 
@@ -159,7 +156,7 @@ cp ~/.gitconfig ~/env-migration-backup/gitconfig.$(date +%Y%m%d).bak
 cp ~/.bash_profile ~/env-migration-backup/bash_profile.$(date +%Y%m%d).bak 2>/dev/null
 ```
 
-- [ ] T4 完成
+- [x] T4 完成
 
 ---
 
@@ -198,7 +195,7 @@ zsh -l -i -c 'which node python3 java; mise current; brew bundle check --file ~/
 ```
 **Expected:** 三者指向 mise shims；`brew bundle check` 输出 `All dependencies are satisfied`。
 
-- [ ] T5 完成
+- [x] T5 完成
 
 ---
 
@@ -222,7 +219,7 @@ ln -sfn ~/Library/Mobile\ Documents/com~apple~CloudDocs/claude-projects ~/.claud
 ls -ld ~/.claude/projects   # -> .../claude-projects
 ```
 
-- [ ] T6 完成
+- [x] T6 完成
 
 ---
 
@@ -246,7 +243,7 @@ zsh -l -i -c 'echo ok'
 ```
 **Expected:** 无 `command not found` / 插件缺失警告。
 
-- [ ] T7 完成
+- [x] T7 完成
 
 ---
 
@@ -266,7 +263,7 @@ git add -A && git commit -m "feat: 共享 ~/.claude/CLAUDE.md 长期记忆" && g
 ```
 **注意：** `~/.claude/projects` 是 iCloud 软链，chezmoi 只管 `CLAUDE.md` 文件本身，不冲突。
 
-- [ ] T8 完成
+- [x] T8 完成
 
 ---
 
@@ -277,15 +274,16 @@ git add -A && git commit -m "feat: 共享 ~/.claude/CLAUDE.md 长期记忆" && g
 
 **Step 1:** 采集快照
 ```bash
-bash ~/Library/Mobile\ Documents/com~apple~CloudDocs/mac-env-sync/scripts/mac-snapshot.sh > ~/m4pro-snapshot.txt
+bash ~/Library/Mobile\ Documents/com~apple~CloudDocs/mac-env-sync/scripts/mac-snapshot.sh > ~/pro14-snapshot.txt
 ```
 
-**Step 2:** 对比已有 mini/pro13，确定 M4 专属要装什么，填：
+**Step 2:** 对比已有 `snapshots/mini.txt` / `snapshots/pro13.txt`，确定 Pro 14 专属要装什么，填：
 - `shared/Brewfile.<hostname3>`（专属 formula/cask/mas）
-- `dot_Brewfile.tmpl` 加 `else if eq .chezmoi.hostname "<hostname3>"` 分支
-- `dot_zprofile.local.tmpl` 加同名分支（若有独有 PATH）
+- `dot_Brewfile.tmpl` 加 `else if eq (lower .chezmoi.hostname) "<hostname3>"` 分支（hostname 比较用 lower，避免 macOS 小写化不匹配——见 a8c46f2）
+- `dot_zprofile.local.tmpl` 加同名分支（若有独有 PATH，同样用 lower 比较）
 - `shared/machines.toml` 登记
 - `.chezmoiignore` 按需
+- 快照归档：`cp ~/pro14-snapshot.txt` 到 mac-env-sync `snapshots/pro14.txt` 并 git commit（否则像 mini.txt 一样会缺失）
 
 **Step 3:** 提交推送
 ```bash
@@ -294,24 +292,38 @@ cd ~/.local/share/chezmoi && git add -A && git commit -m "feat: 接入 Pro 14 (<
 
 **Step 4:** 在 Pro 14 上走 T5 流程（chezmoi init --apply + brew bundle + mise install + refresh-dev）
 
-- [ ] T9 完成（M4 hostname：__________）
+- [ ] T9 完成（Pro 14 hostname：__________）
 
 ---
 
 ### Task T10: 全局验收（跨机一致性 + 续接思考）
 
-**Step 1:** 每台机器验收运行时
+**Step 1:** 每台机器验收运行时（clean-env，不继承父 PATH）
 ```bash
-zsh -l -i -c 'which node python3 java; mise current; echo JAVA_HOME=$JAVA_HOME; brew bundle check --file ~/.Brewfile' | grep -v WARN
+env -i HOME=$HOME PATH=/usr/bin:/bin /bin/zsh -l -i -c 'which node python3 java; mise current; echo JAVA_HOME=$JAVA_HOME; echo PATH残留=$(echo $PATH|tr : "\n"|grep -cE "nvm|pyenv|jenv"); brew bundle check --no-upgrade --file ~/.Brewfile' 2>/dev/null | grep -v WARN
 ```
-**Expected:** 三者指向 mise shims；JAVA_HOME 跟随 mise；brew bundle check 通过。
+**Expected:** 三者指向 mise；JAVA_HOME 跟随 mise；PATH 残留=0；brew bundle check satisfied。
 
-**Step 2:** 跨机续接思考
-- 在 A 机 `claude` 起一会话 → 在 B 机进入同目录 `claude --resume` 应见该会话。
-
-**Step 3:** 确认噪声清理
+**Step 2:** shell 生态（oh-my-zsh + 插件 + starship + php）
 ```bash
-ls ~/.zshrc.backup ~/.zprofile.bak ~/new-zshrc ~/old-zshup 2>/dev/null   # 应无输出
+zsh -l -i -c 'echo ok; ls ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions >/dev/null && echo autosug-ok; ls ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting >/dev/null && echo synhl-ok; command -v starship >/dev/null && echo starship-ok'
+command -v php >/dev/null && php -v 2>/dev/null | head -1   # 装 php 的机器应 5.6.40
+```
+**Expected:** `ok` + 三插件/prompt ok；php 机器 5.6.40 无 warning。
+
+**Step 3:** 全局包 + chezmoi 一致性
+```bash
+pnpm -v; tsc -v; python3 -c "import pydantic;print(\"pip ok\")"
+chezmoi diff ~/.Brewfile ~/.zshrc ~/.zprofile ~/.claude/CLAUDE.md 2>/dev/null | head   # 应无 diff（源与落地一致）
+```
+**Expected:** 全局包版本输出 + pip ok；chezmoi diff 空（源与落地一致）。
+
+**Step 4:** 跨机续接思考
+- 在 A 机 `claude` 起一会话 → 退出 → 在 B 机进同目录 `claude --resume`（zsh 包装会自动 `brctl download` 拉最新 jsonl）应见该会话。
+
+**Step 5:** 确认噪声清理
+```bash
+ls ~/.zshrc.backup ~/.zprofile.bak ~/new-zshrc ~/old-zshrc ~/.nvm ~/.pyenv ~/.jenv 2>/dev/null   # 应无输出
 ```
 
 - [ ] T10 完成

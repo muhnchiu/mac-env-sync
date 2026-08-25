@@ -1,0 +1,507 @@
+
+########## hostname ##########
+MacMini
+MacMini
+MacMini.local
+
+########## macOS version ##########
+ProductName:		macOS
+ProductVersion:		26.5.2
+BuildVersion:		25F84
+
+########## arch ##########
+arm64
+
+########## brew formulae ##########
+ada-url
+aom
+apr
+apr-util
+aspell
+autoconf
+azure-cli
+bat
+brotli
+c-ares
+ca-certificates
+cairo
+chezmoi
+cmake
+cpolar
+curl
+dav1d
+difftastic
+eza
+fd
+ffmpeg
+fmt
+fontconfig
+freetds
+freetype
+fribidi
+fzf
+gcc
+gd
+gdbm
+gdk-pixbuf
+gettext
+gh
+giflib
+git
+git-delta
+git-filter-repo
+glib
+gmp
+go
+graphite2
+graphviz
+gts
+harfbuzz
+hdrhistogram_c
+highway
+icu4c@76
+icu4c@77
+icu4c@78
+imath
+isl
+jasper
+jmeter
+jpeg
+jpeg-turbo
+jpeg-xl
+json-c
+kilo
+krb5
+lame
+lazydocker
+lazygit
+libavif
+libdeflate
+libevent
+libffi
+libgit2
+libidn2
+libmpc
+libnghttp2
+libnghttp3
+libngtcp2
+libomp
+libpng
+libpq
+libpsl
+librsvg
+libsodium
+libssh2
+libtiff
+libtool
+libunistring
+libuv
+libvmaf
+libvpx
+libx11
+libxau
+libxcb
+libxdmcp
+libxext
+libxpm
+libxrender
+libyaml
+libzip
+little-cms2
+llhttp
+llvm@18
+lpeg
+luajit
+luv
+lz4
+lzo
+m4
+macmon
+mas
+maven
+merve
+mingw-w64
+mise
+mpdecimal
+mpfr
+nbytes
+ncurses
+neovim
+netpbm
+nginx
+oniguruma
+opencode
+openexr
+openjdk
+openjdk@17
+openjdk@21
+openldap
+openssl@1.1
+openssl@3
+opus
+pango
+pcre
+pcre2
+php@5.6
+php@7.2
+pixman
+pkgconf
+python@3.12
+python@3.13
+python@3.14
+python@3.9
+ranger
+readline
+reattach-to-user-namespace
+ripgrep
+rtmpdump
+sdl2
+simdjson
+simdutf
+sqlite
+starship
+svt-av1
+tidy-html5
+tmux
+tree-sitter
+unibilium
+unixodbc
+usage
+utf8proc
+uvwasi
+webp
+wget
+x264
+x265
+xdebug@5.6
+xorgproto
+xz
+zoxide
+zstd
+
+########## brew casks ##########
+antigravity-tools
+cc-switch
+copyq
+lulu
+ngrok
+open-island
+redis
+sequel-ace
+wechattweak-cli
+
+########## brew taps ##########
+anomalyco/tap
+exolnet/deprecated
+farion1231/ccswitch
+homebrew/services
+kilo-org/tap
+lbjlaq/antigravity-manager
+mongodb/brew
+probezy/core
+redis/redis
+shivammathur/extensions
+shivammathur/php
+sunnyyoung/tap
+
+########## brew leaves (顶层包) ##########
+ada-url
+azure-cli
+bat
+c-ares
+chezmoi
+cmake
+difftastic
+eza
+fd
+ffmpeg
+fzf
+gcc
+gh
+git
+git-delta
+git-filter-repo
+go
+graphviz
+hdrhistogram_c
+jmeter
+lazydocker
+lazygit
+libffi
+macmon
+mas
+maven
+merve
+mingw-w64
+mise
+nbytes
+neovim
+nginx
+opencode
+openjdk@17
+openssl@1.1
+pkgconf
+python@3.9
+ranger
+reattach-to-user-namespace
+ripgrep
+rtmpdump
+shivammathur/php/php@5.6
+simdjson
+starship
+tmux
+uvwasi
+wget
+zoxide
+
+########## mas (App Store apps) ##########
+ 408981434  iMovie 剪辑  (10.4.4)
+ 409183694  Keynote讲演  (14.5)
+ 409201541  Pages文稿    (14.5)
+ 409203825  Numbers表格  (14.5)
+ 682658836  库乐队       (10.4.14)
+1295203466  Windows App  (11.3.7)
+
+########## /Applications ##########
+企业微信.app
+淘宝开发者工具.app
+微信支付商户平台证书工具.app
+Alfred 5.app
+AnyDesk.app
+Apifox 企业版.app
+Caesium Image Compressor.app
+Cakebrew.app
+CC Switch.app
+ChatGPT.app
+Clash Verge.app
+ClashX Pro.app
+Claude.app
+CleanMyMac X.app
+Codex++.app
+ColorSnapper2.app
+CopyQ.app
+cosbrowser.app
+DaisyDisk.app
+DBeaver.app
+DBX.app
+DingTalk.app
+EasyConnect.app
+Filo.app
+GarageBand.app
+Ghostty.app
+GLPI-Agent
+Google Chrome.app
+iMovie.app
+IntelliJ IDEA.app
+iTerm.app
+iTermBrowserPlugin.app
+Kaleidoscope.app
+Kap.app
+Keka.app
+Keynote.app
+Lark.app
+logioptionsplus.app
+Magic Battery.app
+marktext.app
+Microsoft Edge.app
+Microsoft Remote Desktop.app
+Microsoft Teams.app
+Monitoring Helper.app
+NeteaseMusic.app
+Numbers.app
+Obsidian.app
+Open Island.app
+oss-browser.app
+Pages.app
+Postman.app
+PrinterClient.app
+Proxyman.app
+Python 2.7
+Rectangle.app
+Safari.app
+SecureFX.app
+Shottr.app
+Sourcetree.app
+Sublime Text.app
+SwitchHosts.app
+TencentMeeting.app
+Transmit.app
+Utilities
+Visual Studio Code - Insiders.app
+Warp.app
+WeChat.app
+wechatwebdevtools.app
+Windows App.app
+wpsoffice.app
+XMind.app
+
+########## ~/Applications ##########
+asr
+Chrome Apps.localized
+Claude Code URL Handler.app
+com.chitaner.Longshot
+Edge Apps.localized
+JetBrains Toolbox
+
+########## mise tools ##########
+java    temurin-21.0.12+101.0.LTS  ~/.config/mise/config.toml  temurin-21
+java    8 (symlink)
+java    17 (symlink)
+maven   3.6.3
+maven   3.9.12 (symlink)
+node    16.20.2
+node    22.14.0
+node    24.19.0                    ~/.config/mise/config.toml  24
+pnpm    11.9.0
+python  3.12.14                    ~/.config/mise/config.toml  3.12
+yarn    1.22.19
+
+########## PATH ##########
+/Users/qiuwenbo/.nvm/versions/node/v24.19.0/bin
+/Users/qiuwenbo/.jenv/shims
+/Users/qiuwenbo/.jenv/bin
+/Users/qiuwenbo/.opencode/bin
+/opt/homebrew/opt/openjdk@17/bin
+/usr/local/mysql/bin
+/Users/qiuwenbo/.bun/bin
+/Users/qiuwenbo/.pyenv/shims
+/Users/qiuwenbo/.local/bin
+/usr/local/apache-maven-3.9.12/bin
+/opt/homebrew/sbin
+/opt/homebrew/bin
+/opt/homebrew/opt/mysql@5.7/bin
+/opt/homebrew/opt/php@7.2/sbin
+/opt/homebrew/opt/php@7.2/bin
+/Library/Frameworks/Python.framework/Versions/2.7/bin
+/usr/local/bin
+/System/Cryptexes/App/usr/bin
+/usr/bin
+/bin
+/usr/sbin
+/sbin
+/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin
+/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin
+/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
+/pkg/env/global/bin
+/Library/Apple/usr/bin
+/usr/local/share/dotnet
+~/.dotnet/tools
+/Applications/Ghostty.app/Contents/MacOS
+/Library/Java/JavaVirtualMachines/jdk-1.8.jdk/Contents/Home/bin
+/Users/qiuwenbo/.lmstudio/bin
+/Users/qiuwenbo/go/bin
+/Users/qiuwenbo/.claude/plugins/cache/claude-plugins-official/frontend-design/67a666efc852/bin
+/Users/qiuwenbo/.claude/plugins/cache/superpowers-marketplace/superpowers/4.0.3/bin
+/Users/qiuwenbo/.claude/plugins/cache/claude-code-warp/warp/2.1.0/bin
+
+########## shells ##########
+# List of acceptable shells for chpass(1).
+# Ftpd will not allow users to connect who are not using
+# one of these shells.
+
+/bin/bash
+/bin/csh
+/bin/dash
+/bin/ksh
+/bin/sh
+/bin/tcsh
+/bin/zsh
+default shell: /bin/zsh
+
+########## node global ##########
+(未安装: npm)
+
+########## python ##########
+Python 3.14.2
+annotated-types==0.8.0
+et_xmlfile==2.0.0
+lxml==6.1.2
+numpy==2.5.2
+openpyxl==3.1.5
+pillow==12.3.0
+pip==25.3
+pptx2md==2.0.6
+pydantic_core==2.46.4
+pydantic==2.13.4
+python-pptx==1.0.2
+RapidFuzz==3.14.5
+scipy==1.18.1
+tqdm==4.70.0
+typing_extensions==4.16.0
+typing-inspection==0.4.4
+wheel==0.45.1
+xlsxwriter==3.2.9
+
+########## dotfiles in $HOME ##########
+.babel.7.9.0.development.json
+.bash_history
+.bash_profile
+.bashrc
+.Brewfile
+.CFUserTextEncoding
+.chost
+.claude.json
+.claude.json.backup
+.cnpmrc
+.device_id
+.DS_Store
+.gitconfig
+.gitflow_export
+.gitignore_global
+.hgignore_global
+.hyper.js
+.jetbrains.vmoptions.sh
+.lesshst
+.lmstudio-home-pointer
+.myBase7.ini
+.node_repl_history
+.npmrc
+.p10k.zsh
+.pdfbox.cache
+.pearrc
+.profile
+.python-version
+.rediscli_history
+.stCommitMsg
+.username
+.v8flags.5.0.71.52.0c99b1993a158d6cb83e1700e9704bcd.json
+.v8flags.6.0.286.52.0c99b1993a158d6cb83e1700e9704bcd.json
+.v8flags.6.2.414.50.0c99b1993a158d6cb83e1700e9704bcd.json
+.v8flags.6.6.346.24-node.5.0c99b1993a158d6cb83e1700e9704bcd.json
+.v8flags.6.8.275.32-node.59.0c99b1993a158d6cb83e1700e9704bcd.json
+.v8flags.8.4.371.19-node.17.0c99b1993a158d6cb83e1700e9704bcd.json
+.v8flags.8.4.371.19-node.18.0c99b1993a158d6cb83e1700e9704bcd.json
+.v8flags.8.4.371.19-node.18.63a9f0ea7bb98050796b649e85481845.json
+.v8flags.8.4.371.23-node.63.0c99b1993a158d6cb83e1700e9704bcd.json
+.viminfo
+.wakatime-internal.cfg
+.wakatime.cfg
+.wakatime.db
+.wakatime.log
+.wezterm.lua
+.wget-hsts
+.yarnrc
+.z
+.zcompdump
+.zcompdump-MacBookPro13-5.9
+.zcompdump-MacMini-5.9
+.zcompdump-MacMini-5.9.MacMini.local.45864
+.zcompdump-MacMiniM4-5.9
+.zcompdump-MacMiniM4-5.9.MacMiniM4.local.38339
+.zcompdump-MacMiniM4-5.9.MacMiniM4.local.95381
+.zcompdump.MacMini.local.68242
+.zcompdump.MacMiniM4.local.14738
+.zprofile
+.zprofile.bak
+.zprofile.local
+.zprofile.pysave
+.zsh_history
+.zshrc
+.zshrc.backup
+.zshrc.bak.20260824-162337
+Documents/com~apple~CloudDocs
+jmeter.log
+nohup.out
+
+########## done ##########
+snapshot complete on MacMini.local
