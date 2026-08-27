@@ -1,0 +1,107 @@
+
+########## hostname ##########
+MacMini.local
+
+########## A. brew cask 接管的 app ##########
+receipt: antigravity-tools
+receipt: cc-switch
+receipt: copyq
+receipt: lulu
+receipt: ngrok
+receipt: open-island
+receipt: redis
+receipt: sequel-ace
+receipt: tailscale-app
+receipt: termius
+receipt: wechattweak-cli
+
+artifact: Antigravity Tools.app          (cask antigravity-tools)
+artifact: CC Switch.app                  (cask cc-switch)
+artifact: CopyQ.app                      (cask copyq)
+artifact: LuLu.app                       (cask lulu)
+artifact: Open Island.app                (cask open-island)
+artifact: Sequel Ace.app                 (cask sequel-ace)
+artifact: Termius.app                    (cask termius)
+
+########## B. App Store 安装的 app (_MASReceipt) ##########
+MAS: GarageBand
+MAS: iMovie
+MAS: Keynote
+MAS: Magic Battery
+MAS: Numbers
+MAS: Pages
+MAS: Windows App
+(done)
+
+########## C. 手动安装的 app（名字 | bundle id | 版本） ##########
+淘宝开发者工具 | com.taobao.o3 | 3.0.9
+企业微信 | com.tencent.WeWorkMac | 5.0.10
+微信支付商户平台证书工具 | FiT.WXCertUtil | ?
+Alfred 5 | com.runningwithcrayons.Alfred | 5.6.2
+AnyDesk | com.philandro.anydesk | 9.7.2
+Apifox 企业版 | cn.apifox.app-pdv | 2.7.24
+Caesium Image Compressor | com.saerasoft.caesium | 2.5.1
+Cakebrew | com.brunophilipe.Cakebrew | 1.3
+ChatGPT | com.openai.codex | 26.727.40816
+Clash Verge | io.github.clash-verge-rev.clash-verge-rev | 2.5.2
+ClashX Pro | com.west2online.ClashXPro | 1.116.1.1
+Claude | com.anthropic.claudefordesktop | 1.14271.0
+Claude Code URL Handler | com.anthropic.claude-code-url-handler | ?
+CleanMyMac X | com.macpaw.CleanMyMac4 | 4.15.0
+Codex++ | com.bigpizzav3.codexplusplus | 1.2.9
+ColorSnapper2 | com.koolesache.ColorSnapper2 | 1.6.4
+cosbrowser | com.tencent.cosbrowser | 2.12.2
+DaisyDisk | com.daisydiskapp.DaisyDiskStandAlone | 4.26.1
+DBeaver | org.jkiss.dbeaver.core.product | 24.3.1
+DBX | com.dbx.app | 0.5.93
+DingTalk | com.alibaba.DingTalkMac | 8.5.0
+EasyConnect | com.sangfor.Easyconnect | 7.6.7
+Filo | com.filo.client | 2.2.8
+Ghostty | com.mitchellh.ghostty | 1.3.1
+Google Chrome | com.google.Chrome | 151.0.7922.174
+IntelliJ IDEA | com.jetbrains.intellij | 2025.3.1.1
+iTerm | com.googlecode.iterm2 | 3.6.8
+iTermBrowserPlugin | com.googlecode.iterm2.iTermBrowserPlugin | 1.0
+Kaleidoscope | app.kaleidoscope.v4 | 5.1.1
+Kap | com.wulkano.kap | 3.6.0
+Keka | com.aone.keka | 1.2.16
+Lark | com.electron.lark | 131.0.6778.268
+logioptionsplus | com.logi.optionsplus | 2.5.926888
+marktext | com.github.marktext.marktext | 0.19.1
+Microsoft Edge | com.microsoft.edgemac | 151.0.4129.107
+Microsoft Remote Desktop | com.microsoft.rdc.macos | 10.3.3
+Microsoft Teams | com.microsoft.teams2 | 25306.805.4102.7211
+Monitoring Helper | com.sascha-simon.helper | 3.0.1
+NeteaseMusic | com.netease.163music | 3.1.6
+Obsidian | md.obsidian | 1.12.4
+oss-browser | com.electron.oss-browser | 1.15.0
+Postman | com.postmanlabs.mac | 11.79.5
+PrinterClient | com.isecstar.mpc | 5.11.1
+Proxyman | com.proxyman.NSProxy | 6.3.0
+Rectangle | com.knollsoft.Rectangle | 0.94
+Safari | com.apple.Safari | 26.6.2
+SecureFX | com.vandyke.SecureFX | 8.5.1
+Shottr | cc.ffitch.shottr | 1.9.1
+Sourcetree | com.torusknot.SourceTreeNotMAS | 4.2.17
+Sublime Text | com.sublimetext.4 | Build 4200
+SwitchHosts | net.oldj.switchhosts | 4.3.0
+Tailscale | io.tailscale.ipn.macsys | 1.102.3
+TencentMeeting | com.tencent.meeting | 3.38.1
+ToDesk | com.youqu.todesk.mac | 4.10.1.0
+Transmit | com.panic.Transmit | 5.11.3
+Visual Studio Code - Insiders | com.microsoft.VSCodeInsiders | 1.135.0-insider
+Warp | dev.warp.Warp-Stable | 0.2026.08.19.08.15.01
+WeChat | com.tencent.xinWeChat | 3.8.10.17
+wechatwebdevtools | com.github.Electron | 36.6.0
+wpsoffice | com.kingsoft.wpsoffice.mac | 12.1.26046
+XMind | net.xmind.vana.app | 11.0.1
+(done)
+
+########## D. receipt 残留告警（cask 工件不在磁盘 = app 可能被手动卸载） ##########
+⚠ cask 'antigravity-tools' 工件 Antigravity Tools.app 不在磁盘 —— 确认是否被手动卸载（brew uninstall antigravity-tools 清 receipt）
+⚠ cask 'lulu' 工件 LuLu.app 不在磁盘 —— 确认是否被手动卸载（brew uninstall lulu 清 receipt）
+⚠ cask 'sequel-ace' 工件 Sequel Ace.app 不在磁盘 —— 确认是否被手动卸载（brew uninstall sequel-ace 清 receipt）
+(done)
+
+########## done ##########
+audit complete on MacMini.local —— 对照 docs/plans/2026-08-27-cask-adopt-plan.md 的 token 表逐项决定 转换/保留/删除
