@@ -102,10 +102,17 @@ cd ~/workspace/mac-env-sync
 
 - [x] **LuLu**：~~core 声明着，但 app 不在磁盘~~ → **2026-08-27 已决策：弃用**。mini receipt + 用户区 + `/Library/Objective-See`（root 属主，2022 年规则遗留，管理员弹窗删除）已全清，core 条目注释化；p13 的 receipt 残留待该机 `brew uninstall --cask lulu --force`
 - [x] **Sequel Ace**：~~core 声明着（共用），但 mini 上 app 不在~~ → **2026-08-27 已决策：全线退役**（数据库统一 DBX）。mini 的 receipt+数据已清，core 条目已注释进历史记录；p13 的 receipt 残留待该机 `brew uninstall --cask sequel-ace --force`
-- [ ] **Antigravity Tools**：MacMini 专属文件声明着，app 不在。同上
+- [x] **Antigravity Tools**：~~MacMini 专属文件声明着，app 不在~~ → **2026-08-27 已决策：卸载**。receipt 已撤、tap `lbjlaq/antigravity-manager` 已 untap、Brewfile.MacMini 两条目已删
 - [ ] Microsoft Remote Desktop 旧版（10.3.3）：Windows App（MAS 新版）已装，建议直接删 `/Applications/Microsoft Remote Desktop.app`
 - [ ] ClashX Pro（1.116.1.1）：与 Clash Verge Rev 功能重复且无 cask，建议退役删除
 - [ ] Magic Battery（MAS）未登记进任何 Brewfile：`mas search` 查 id 后补进对应文件
+- [ ] **tap trust 待办**（Homebrew 新版要求，未 trust 时 `brew list --versions` 等命令报错；2026-08-27 发现）。精确信任剩余 4 条（antigravity-tools 随包卸载不再需要）：
+  ```bash
+  brew trust --formula kilo-org/tap/kilo
+  brew trust --formula probezy/core/cpolar
+  brew trust --cask farion1231/ccswitch/cc-switch
+  brew trust --cask redis/redis/redis
+  ```
 
 ---
 

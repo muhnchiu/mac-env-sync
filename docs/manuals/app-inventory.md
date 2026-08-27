@@ -49,7 +49,7 @@
 | marktext | 手动 | cask 已移除 | m | m | — | 停更 | 项目停更 |
 | Warp | cask-p14 | `warp` | m | — | ✓ | 待退役 | mini 2026-08-27 决定不转（主力 Ghostty） |
 | Applite | mini | `applite` | ✓ | — | — | 在用 | 2026-08-27 brew GUI（免费/开源/官方 cask）；先试 Cork 因 €25 付费换掉；Cakebrew(停更) 前身已删 |
-| Antigravity Tools | cask-mini 声明 | `antigravity-tools` | ⚠ | — | m | 决策中 | mini 上 app 不在磁盘；tap 需 trust |
+| ~~Antigravity Tools~~ | 已撤 | `antigravity-tools` | 已清 | — | — | **已退役** | 2026-08-27 卸载（app 早已不在磁盘）；tap lbjlaq/antigravity-manager 已 untap；台账勘误：p14 从未装过（前版误标） |
 | github-copilot-for-xcode | cask-p14 | 同名 | — | — | ✓ | 在用 | |
 | miniforge | cask-p14 | 同名 | — | — | ✓ | 在用 | |
 | Xcode | 手动 | — | — | — | m | 在用 | 重件，不入 cask |
