@@ -74,7 +74,7 @@
 | Clash Verge Rev | 手动 | `clash-verge-rev` | m | m | m | 在用 | ⚠ 原版 clash-verge 已死档 |
 | ClashX Pro | 手动 | 无 cask | m | m | m | 待清理 | mini 建议退役（与 Clash Verge 重复） |
 | ngrok | core | 同名 | ✓ | ✓ | — | 在用 | CLI 型 |
-| LuLu | core | `lulu` | ⚠ | ✓ | — | 决策中 | mini 上 app 不在磁盘（出站防火墙！）：装回 or 移除 |
+| ~~LuLu~~ | 已撤 | `lulu` | 已清 | ⚠ | — | **已退役** | 2026-08-27 弃用（出站防火墙）；mini receipt + /Library/Objective-See(root 属主, 2022 遗留) 已清；p13 receipt 待清 |
 | AnyDesk | 手动 | `anydesk` | m | m | m | 在用 | |
 | ToDesk | 手动 | 无 cask | m | m | — | 在用 | |
 | AweSun (向日葵) | 手动 | — | — | m | — | | p13 |
