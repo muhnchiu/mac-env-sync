@@ -101,7 +101,7 @@ cd ~/workspace/mac-env-sync
 ### 1.3 清理决策（mini 特有，与收编独立）
 
 - [ ] **LuLu**：core 声明着，但 app 不在磁盘。二选一：`brew install --cask lulu` 装回（出站防火墙）／不要了 → core 注释掉 + `brew uninstall lulu`
-- [ ] **Sequel Ace**：core 声明着（共用），但 mini 上 app 不在。同上二选一。注意：不处理的话下次 `brew bundle install` 会自动装回来
+- [x] **Sequel Ace**：~~core 声明着（共用），但 mini 上 app 不在~~ → **2026-08-27 已决策：全线退役**（数据库统一 DBX）。mini 的 receipt+数据已清，core 条目已注释进历史记录；p13 的 receipt 残留待该机 `brew uninstall --cask sequel-ace --force`
 - [ ] **Antigravity Tools**：MacMini 专属文件声明着，app 不在。同上
 - [ ] Microsoft Remote Desktop 旧版（10.3.3）：Windows App（MAS 新版）已装，建议直接删 `/Applications/Microsoft Remote Desktop.app`
 - [ ] ClashX Pro（1.116.1.1）：与 Clash Verge Rev 功能重复且无 cask，建议退役删除

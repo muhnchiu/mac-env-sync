@@ -29,7 +29,7 @@
 | DBX | core | `dbx` | ✓ | m | m | 在用 | |
 | Postman | mini+p13 | `postman` | ✓ | m | — | 在用 | |
 | Proxyman | mini+p13 | `proxyman` | ✓ | m | — | 在用 | |
-| Sequel Ace | core | `sequel-ace` | ⚠ | ✓ | — | 决策中 | mini 上 app 不在磁盘（receipt 在）：装回 or 移除 |
+| ~~Sequel Ace~~ | 已撤 | `sequel-ace` | 已清 | ⚠ | — | **已退役** | 2026-08-27 全线退役（数据库统一 DBX）；mini receipt+数据已清；p13 receipt 残留待该机清 |
 | Sourcetree | 手动 | `sourcetree` | m | m | — | 在用 | |
 | WindTerm | 手动 | — | — | — | m | | p14 |
 | Navicat Premium | 手动 | — | — | — | m | | p14 |
