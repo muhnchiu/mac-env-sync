@@ -25,7 +25,7 @@
 | Sublime Text | core | `sublime-text` | ✓ | m | m | 在用 | 2026-08-27 收编 mini；p13/p14 拉取时先 adopt |
 | ~~IntelliJ IDEA (Ult)~~ | 手动 | `intellij-idea` | 已卸 | — | m | **已退役** | 2026-08-27 mini 卸载（含 JetBrains 配置清理）；p14 仍装；重装走 cask |
 | Termius | core | `termius` | ✓ | — | — | 在用 | 账号云同步 |
-| DBeaver CE | mini+p13 | `dbeaver-community` | ✓ | m | — | 在用 | 下载坑：dbeaver.io 302 跳 GitHub Releases，curl 续传灌缓存 |
+| ~~DBeaver CE~~ | p13 | `dbeaver-community` | 已卸 | m | — | **已退役(mini)** | 2026-08-27 mini 卸载（数据库统一用 DBX）；p13 仍装 |
 | DBX | core | `dbx` | ✓ | m | m | 在用 | |
 | Postman | mini+p13 | `postman` | ✓ | m | — | 在用 | |
 | Proxyman | mini+p13 | `proxyman` | ✓ | m | — | 在用 | |
