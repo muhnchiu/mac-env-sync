@@ -41,7 +41,7 @@ cd ~/workspace/mac-env-sync
 - [ ] iTerm2 · `com.googlecode.iterm2` → `iterm2`
 - [ ] Ghostty · `com.mitchellh.ghostty` → `ghostty`（Pro14 文件已声明，注释建议上提 core）
 - [~] Warp · `dev.warp.Warp-Stable` → `warp` —— **2026-08-27 决定不转**：已不常用（主力 Ghostty），保持手动装现状；Pro14 Brewfile 里的 `cask "warp"` 声明保留（那台本就是 cask 装的）
-- [~] IntelliJ IDEA · `com.jetbrains.intellij`（Ultimate）→ `intellij-idea` —— **2026-08-27 决定不转**：已不常用（主力 VS Code），保持手动装现状
+- [~] IntelliJ IDEA · `com.jetbrains.intellij`（Ultimate）→ `intellij-idea` —— **2026-08-27 已卸载**（决定不用了，含 JetBrains 配置清理）；p14 上仍装
 - [x] DBeaver CE · `org.jkiss.dbeaver.core.product` → `dbeaver-community`（2026-08-27 mini 已 adopt；mini+pro13 登记机器文件。**下载坑见下**）
 - [x] Postman · `com.postmanlabs.mac` → `postman`（2026-08-27 mini 已 adopt；mini+pro13 登记机器文件）
 - [x] Proxyman · `com.proxyman.NSProxy` → `proxyman`（2026-08-27 同上）

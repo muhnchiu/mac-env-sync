@@ -23,7 +23,7 @@
 | VS Code Insiders | 手动 | `visual-studio-code@insiders` | m | m | m | 在用 | 主力编辑器；待收编（自更频繁，adopt 需版本吻合） |
 | iTerm2 | 手动 | `iterm2` | m | m | m | 在用 | |
 | Sublime Text | core | `sublime-text` | ✓ | m | m | 在用 | 2026-08-27 收编 mini；p13/p14 拉取时先 adopt |
-| IntelliJ IDEA (Ult) | 手动 | `intellij-idea` | m | — | m | 待退役 | mini 2026-08-27 决定不转（主力 VS Code） |
+| ~~IntelliJ IDEA (Ult)~~ | 手动 | `intellij-idea` | 已卸 | — | m | **已退役** | 2026-08-27 mini 卸载（含 JetBrains 配置清理）；p14 仍装；重装走 cask |
 | Termius | core | `termius` | ✓ | — | — | 在用 | 账号云同步 |
 | DBeaver CE | mini+p13 | `dbeaver-community` | ✓ | m | — | 在用 | 下载坑：dbeaver.io 302 跳 GitHub Releases，curl 续传灌缓存 |
 | DBX | core | `dbx` | ✓ | m | m | 在用 | |
