@@ -94,7 +94,7 @@ cd ~/workspace/mac-env-sync
 | 微信支付商户平台证书工具 | 企业工具，无 cask |
 | 淘宝开发者工具（`com.taobao.o3`） | 企业工具，无 cask |
 | Apifox 企业版（`cn.apifox.app-pdv`） | **cask `apifox` 是标准版**，企业版走企业渠道 |
-| ~~Cakebrew~~ | **2026-08-27 已删除**（项目停更），换 `cask "cork"`（MacMini 已登记）。pro13/pro14 上也各有手动装的 Cakebrew，可同样清理 |
+| ~~Cakebrew~~ | **2026-08-27 已删除**（项目停更），最终换 `cask "applite"`（免费/开源；中途试过 Cork 因 €25 付费弃用，MacMini 已登记）。pro13/pro14 上也各有手动装的 Cakebrew，可同样清理 |
 | Filo（`com.filo.client`） | **cask `filo` 是 filomail 邮件客户端，疑似不同产品**，勿装 |
 | 罗技 Options+（`com.logi.optionsplus`） | 官网渠道，无 cask |
 

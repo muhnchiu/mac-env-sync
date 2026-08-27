@@ -48,7 +48,7 @@
 | SecureFX | 手动 | 无 cask | m | m | — | 保留 | VanDyke 官网渠道 |
 | marktext | 手动 | cask 已移除 | m | m | — | 停更 | 项目停更 |
 | Warp | cask-p14 | `warp` | m | — | ✓ | 待退役 | mini 2026-08-27 决定不转（主力 Ghostty） |
-| Cork | mini | `cork` | ✓ | — | — | 在用 | 2026-08-27 替代 Cakebrew（brew GUI） |
+| Applite | mini | `applite` | ✓ | — | — | 在用 | 2026-08-27 brew GUI（免费/开源/官方 cask）；先试 Cork 因 €25 付费换掉；Cakebrew(停更) 前身已删 |
 | Antigravity Tools | cask-mini 声明 | `antigravity-tools` | ⚠ | — | m | 决策中 | mini 上 app 不在磁盘；tap 需 trust |
 | github-copilot-for-xcode | cask-p14 | 同名 | — | — | ✓ | 在用 | |
 | miniforge | cask-p14 | 同名 | — | — | ✓ | 在用 | |
