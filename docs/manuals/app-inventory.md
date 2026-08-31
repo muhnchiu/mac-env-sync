@@ -111,7 +111,7 @@
 | Rectangle | 手动 | `rectangle` | m | m | — | 在用 | |
 | Shottr | 手动 | `shottr` | m | m | — | 在用 | |
 | Kap | 手动 | `kap` | m | m | — | 在用 | |
-| Keka | 手动 | `keka` | m | m | m | 在用 | |
+| Keka | core | `keka` | ✓ | m | m | 在用 | 2026-08-31 mini 收编：1.2.16→1.6.7（adopt 版本错位用 reinstall 解决）；p13/p14 拉取时 `brew install --cask --adopt keka` 再 bundle |
 | CopyQ | core | `copyq` | ✓ | ✓ | — | 在用 | p14 未装（core 声明，bundle 时会装上） |
 | SwitchHosts | 手动 | `switchhosts` | m | m | m | 在用 | |
 | ColorSnapper2 | 手动 | `colorsnapper` | m | m | — | 保留 | ⚠ token 无 2 |
@@ -120,6 +120,7 @@
 | Magic Battery | mas | id 待查 | ✓ | ✓ | — | 在用 | 未登记 Brewfile，待补 mas 条目 |
 | Tencent Lemon | 手动 | — | — | m | — | | p13 清理工具 |
 | Monitoring Helper | 手动 | 无 cask | m | m | — | 保留 | core 已有 macmon |
+| Stats | mini | `stats` | ✓ | — | — | 在用 | 2026-08-31 新装：菜单栏实时系统监控（内存/压力/swap/进程排行，兼 CPU/GPU/网络）；免费开源 exelban/stats；终端侧监控已有 macmon(core) |
 | Filo | 手动 | 无（⚠ filo=filomail） | m | m | — | 保留 | cask filo 是别的产品，勿装 |
 | Caesium | 手动 | 无 cask | m | m | — | 保留 | |
 | 罗技 Options+ | 手动（官网） | 无 cask | m | m | — | 保留 | |

@@ -1,6 +1,6 @@
 # 2026-08-27 手动安装 app 收编 brew cask —— 盘点与执行计划
 
-> 状态：⏸ **待逐项确认**（本文是核对底稿，尚未执行任何收编）
+> 状态：🔄 **逐项执行中**（2026-08-27 起陆续收编，进度见勾选项与台账；本文为底稿，长期登记看主控台账）
 > 由来：Tailscale / Termius 手动安装转 cask 后，对 mini 做的全量盘点（2026-08-27）。
 > 工具：`scripts/audit-manual-apps.sh`（三台通用，见下）。
 > **主控台账**：`docs/manuals/app-inventory.md`（三机软件单一事实源；本文只管"收编执行"，台账管"长期登记"）。
@@ -53,7 +53,7 @@ cd ~/workspace/mac-env-sync
 - [ ] Rectangle · `com.knollsoft.Rectangle` → `rectangle`
 - [ ] Shottr · `cc.ffitch.shottr` → `shottr`
 - [ ] Kap · `com.wulkano.kap` → `kap`
-- [ ] Keka · `com.aone.keka` → `keka`
+- [x] Keka · `com.aone.keka` → `keka`（2026-08-31 mini 已 adopt + core 登记，三机都有；1.2.16→1.6.7。**adopt 版本错位坑**：adopt 后 receipt 记新版而 app 仍旧版，`brew upgrade` 认为已是最新不动，需 `brew reinstall --cask keka` 强制替换）
 - [ ] XMind · → `xmind`
 - [ ] SwitchHosts · `net.oldj.switchhosts` → `switchhosts`
 - [ ] Obsidian · `md.obsidian` → `obsidian`
