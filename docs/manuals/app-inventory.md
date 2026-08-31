@@ -30,7 +30,7 @@
 | Postman | mini+p13 | `postman` | ✓ | m | — | 在用 | |
 | Proxyman | mini+p13 | `proxyman` | ✓ | m | — | 在用 | |
 | ~~Sequel Ace~~ | 已撤 | `sequel-ace` | 已清 | ⚠ | — | **已退役** | 2026-08-27 全线退役（数据库统一 DBX）；mini receipt+数据已清；p13 receipt 残留待该机清 |
-| Sourcetree | 手动 | `sourcetree` | m | m | — | 在用 | |
+| ~~Sourcetree~~ | 手动 | `sourcetree` | 已卸 | m | — | **已退役(mini)** | 2026-08-31 mini 卸载：GitHub diff/PR review 改由 Orca 原生 + diff 标注回灌顶替；p13 待该机卸（手动装无 brew receipt，删 app + ~/Library 残留即可） |
 | WindTerm | 手动 | — | — | — | m | | p14 |
 | Navicat Premium | 手动 | — | — | — | m | | p14 |
 | Claude | 手动 | `claude` | m | — | — | 在用 | 待收编 |
