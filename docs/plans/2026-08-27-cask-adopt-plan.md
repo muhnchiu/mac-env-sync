@@ -46,7 +46,7 @@ cd ~/workspace/mac-env-sync
 - [x] Postman · `com.postmanlabs.mac` → `postman`（2026-08-27 mini 已 adopt；mini+pro13 登记机器文件）
 - [x] Proxyman · `com.proxyman.NSProxy` → `proxyman`（2026-08-27 同上）
 - [ ] Sourcetree · `com.torusknot.SourceTreeNotMAS` → `sourcetree`
-- [x] Transmit · `com.panic.Transmit` → `transmit`（2026-08-31 mini cask 收编 5.11.6。**当日曾以 Cyberduck 替代并退役，实测回滚**：堡垒机 pekonfortress 的「密码+MFA+选服务器」交互链 Cyberduck 转发不了（过 MFA 即卡），Transmit 能逐条弹窗转发。教训：替代前先验证特殊场景。p13 手动装待 adopt）
+- [~] Transmit · `com.panic.Transmit` → `transmit` —— **2026-08-31 定案：不入 brew，永久手动**（⚠ 勿在任何 Brewfile 声明，bundle 会与手动版冲突/覆盖）。当日经过：cyberduck 替代失败（堡垒机「密码+MFA+选服务器」交互链只有 Transmit 能转发）→cask 回滚 5.11.6→最终手动安装。教训：替代前先验证特殊场景
 - [ ] DaisyDisk · `com.daisydiskapp.DaisyDiskStandAlone` → `daisydisk`
 - [ ] Kaleidoscope · `app.kaleidoscope.v4` → `kaleidoscope`（同上）
 - [ ] Alfred 5 · `com.runningwithcrayons.Alfred` → `alfred`
