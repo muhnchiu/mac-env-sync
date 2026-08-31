@@ -44,7 +44,7 @@
 | 微信开发者工具 | 手动 | `wechatwebdevtools` | m | m | m | 在用 | |
 | oss-browser (阿里云) | 手动 | `oss-browser` | m | m | m* | 在用 | p14 是 oss-browser2（新版名） |
 | cosbrowser (腾讯云) | 手动 | 无 cask | m | m | — | 保留 | |
-| Cyberduck | mini+p13 | `cyberduck` | ✓ | — | — | 在用 | 2026-08-31 新装；作通用 SFTP/云存储工具留用（堡垒机交互链不支持，见 Transmit 行） |
+| Cyberduck | 已卸 | `cyberduck` | 已清 | — | — | **已退役** | 2026-08-31 当日装当日卸：堡垒机交互链不支持（Transmit 回滚），通用场景无增量价值，只留 Transmit 一个 |
 | Transmit | mini+p13 | `transmit` | ✓ | m | — | 在用 | 2026-08-31 退役又回滚：堡垒机 pekonfortress 是「密码+MFA+选服务器」交互链，Cyberduck 过了 MFA 就卡住，Transmit 能逐条转发；mini cask 收编 5.11.6（授权需重输），p13 待 adopt |
 | SecureFX | 手动 | 无 cask | m | m | — | 保留 | VanDyke 官网渠道 |
 | marktext | 手动 | cask 已移除 | m | m | — | 停更 | 项目停更 |
