@@ -45,7 +45,7 @@
 | oss-browser (阿里云) | 手动 | `oss-browser` | m | m | m* | 在用 | p14 是 oss-browser2（新版名） |
 | cosbrowser (腾讯云) | 手动 | 无 cask | m | m | — | 保留 | |
 | Cyberduck | 已卸 | `cyberduck` | 已清 | — | — | **已退役** | 2026-08-31 当日装当日卸：堡垒机交互链不支持（Transmit 回滚），通用场景无增量价值，只留 Transmit 一个 |
-| Transmit | mini+p13 | `transmit` | ✓ | m | — | 在用 | 2026-08-31 退役又回滚：堡垒机 pekonfortress 是「密码+MFA+选服务器」交互链，Cyberduck 过了 MFA 就卡住，Transmit 能逐条转发；mini cask 收编 5.11.6（授权需重输），p13 待 adopt |
+| Transmit | 已卸 | `transmit` | 已清 | m | — | **待定** | 2026-08-31 一日三折：cyberduck 替代（堡垒机交互链卡住）→回滚 Transmit cask 5.11.6→同日再卸载，去向待定；连接数据保留在 ~/Library/Application Support/Transmit；p13 手动装暂留 |
 | SecureFX | 手动 | 无 cask | m | m | — | 保留 | VanDyke 官网渠道 |
 | marktext | 手动 | cask 已移除 | m | m | — | 停更 | 项目停更 |
 | Warp | cask-p14 | `warp` | m | — | ✓ | 待退役 | mini 2026-08-27 决定不转（主力 Ghostty） |
