@@ -121,7 +121,7 @@
 | Magic Battery | mas | id 待查 | ✓ | ✓ | — | 在用 | 未登记 Brewfile，待补 mas 条目 |
 | Tencent Lemon | 手动 | — | — | m | — | | p13 清理工具 |
 | Monitoring Helper | 手动 | 无 cask | m | m | — | 保留 | core 已有 macmon |
-| Stats | mini+p13 | `stats` | ✓ | ✓ | — | 在用 | 2026-08-31 新装：菜单栏实时系统监控（内存/压力/swap/进程排行，兼 CPU/GPU/网络）；免费开源 exelban/stats；终端侧监控已有 macmon(core)；同日 p13 装入（brew cask 直装，无 adopt 步骤） |
+| Stats | core | `stats` | ✓ | ✓ | — | 在用 | 2026-08-31 新装收编 core：菜单栏实时系统监控（内存/压力/swap/进程排行，兼 CPU/GPU/网络）；免费开源 exelban/stats；终端侧监控已有 macmon(core)；mini/p13 brew 直装（无 adopt 步骤），p14 拉取时会装上 |
 | Filo | 手动 | 无（⚠ filo=filomail） | m | m | — | 保留 | cask filo 是别的产品，勿装 |
 | Caesium | 手动 | 无 cask | m | m | — | 保留 | |
 | 罗技 Options+ | 手动（官网） | 无 cask | m | m | — | 保留 | |
