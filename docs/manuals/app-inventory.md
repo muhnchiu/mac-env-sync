@@ -44,7 +44,8 @@
 | 微信开发者工具 | 手动 | `wechatwebdevtools` | m | m | m | 在用 | |
 | oss-browser (阿里云) | 手动 | `oss-browser` | m | m | m* | 在用 | p14 是 oss-browser2（新版名） |
 | cosbrowser (腾讯云) | 手动 | 无 cask | m | m | — | 保留 | |
-| Transmit | 手动 | `transmit` | m | m | — | 在用 | 付费授权在 ~/Library |
+| Cyberduck | mini+p13 | `cyberduck` | ✓ | — | — | 在用 | 2026-08-31 替代 Transmit；两台机器文件已声明，p13 下次 bundle 装上 |
+| Transmit | 已卸 | `transmit` | 已清 | m | — | **已退役** | 2026-08-31 mini 卸载：轻使用（仅 1 条 SFTP 收藏且闲置 3 月+），免费替代 Cyberduck；p13 待该机卸载 |
 | SecureFX | 手动 | 无 cask | m | m | — | 保留 | VanDyke 官网渠道 |
 | marktext | 手动 | cask 已移除 | m | m | — | 停更 | 项目停更 |
 | Warp | cask-p14 | `warp` | m | — | ✓ | 待退役 | mini 2026-08-27 决定不转（主力 Ghostty） |

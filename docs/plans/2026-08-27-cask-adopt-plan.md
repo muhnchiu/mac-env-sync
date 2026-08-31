@@ -46,7 +46,7 @@ cd ~/workspace/mac-env-sync
 - [x] Postman · `com.postmanlabs.mac` → `postman`（2026-08-27 mini 已 adopt；mini+pro13 登记机器文件）
 - [x] Proxyman · `com.proxyman.NSProxy` → `proxyman`（2026-08-27 同上）
 - [ ] Sourcetree · `com.torusknot.SourceTreeNotMAS` → `sourcetree`
-- [ ] Transmit · `com.panic.Transmit` → `transmit`（授权在 ~/Library，收编不影响）
+- [~] Transmit · `com.panic.Transmit` → `transmit` —— **2026-08-31 决定退役**：轻使用（仅 1 条 SFTP 收藏，闲置 3 月+），免费替代 Cyberduck（`cyberduck`）；mini 已卸载（app+数据已清），p13 待该机卸载
 - [ ] DaisyDisk · `com.daisydiskapp.DaisyDiskStandAlone` → `daisydisk`
 - [ ] Kaleidoscope · `app.kaleidoscope.v4` → `kaleidoscope`（同上）
 - [ ] Alfred 5 · `com.runningwithcrayons.Alfred` → `alfred`
