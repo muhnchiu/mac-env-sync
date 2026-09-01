@@ -91,7 +91,7 @@
 | 115Browser | 手动 | — | — | — | m | | p14 |
 | WPS Office | 手动 | `wpsoffice-cn`? | m | m | — | 在用 | 装时核对 cn/intl 账号体系 |
 | Keynote / Pages / Numbers | mas | 409183694 等 | ✓ | ✓ | ✓ | 在用 | |
-| XMind | 手动 | `xmind` | m | — | — | 在用 | |
+| ~~XMind~~ | 手动 | `xmind` | 已卸 | — | — | **已退役** | 2026-09-01 mini 卸载：断用三年（内部缓存止于 2023-06，真文档全为 2021 前端笔记）；15 个 .xmind 归档留 iCloud `Xmind Files/`，需要时免费版可开；视觉思考走 Obsidian Canvas + Claude 吐 Mermaid/markmap |
 | Obsidian | 手动 | `obsidian` | m | m | m | 在用 | |
 | MarkViewer | 手动 | — | — | m | — | | p13 |
 | 网易云音乐 | 手动 | `neteasemusic` | m | m | m | 在用 | ⚠ 不是 netease-cloud-music |
