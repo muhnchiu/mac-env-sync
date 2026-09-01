@@ -45,7 +45,7 @@ cd ~/workspace/mac-env-sync
 - [x] DBeaver CE · `org.jkiss.dbeaver.core.product` → `dbeaver-community`（2026-08-27 mini 已 adopt；mini+pro13 登记机器文件。**下载坑见下**）
 - [x] Postman · `com.postmanlabs.mac` → `postman`（2026-08-27 mini 已 adopt；mini+pro13 登记机器文件）
 - [x] Proxyman · `com.proxyman.NSProxy` → `proxyman`（2026-08-27 同上）
-- [ ] Sourcetree · `com.torusknot.SourceTreeNotMAS` → `sourcetree`
+- [~] Sourcetree · `com.torusknot.SourceTreeNotMAS` → `sourcetree` —— **2026-08-31 已退役**：mini+p13 卸载（GitHub diff/PR review 改由 Orca 原生 + diff 标注回灌顶替），无需收编
 - [~] Transmit · `com.panic.Transmit` → `transmit` —— **2026-08-31 定案：不入 brew，永久手动**（⚠ 勿在任何 Brewfile 声明，bundle 会与手动版冲突/覆盖）。当日经过：cyberduck 替代失败（堡垒机「密码+MFA+选服务器」交互链只有 Transmit 能转发）→cask 回滚 5.11.6→最终手动安装。教训：替代前先验证特殊场景
 - [ ] DaisyDisk · `com.daisydiskapp.DaisyDiskStandAlone` → `daisydisk`
 - [ ] Kaleidoscope · `app.kaleidoscope.v4` → `kaleidoscope`（同上）
@@ -54,7 +54,7 @@ cd ~/workspace/mac-env-sync
 - [ ] Shottr · `cc.ffitch.shottr` → `shottr`
 - [ ] Kap · `com.wulkano.kap` → `kap`
 - [x] Keka · `com.aone.keka` → `keka`（2026-08-31 mini 已 adopt + core 登记，三机都有；1.2.16→1.6.7。**adopt 版本错位坑**：adopt 后 receipt 记新版而 app 仍旧版，`brew upgrade` 认为已是最新不动，需 `brew reinstall --cask keka` 强制替换）
-- [ ] XMind · → `xmind`
+- [~] XMind · → `xmind` —— **2026-09-01 已退役**：断用三年卸载（缓存止于 2023-06），15 个 .xmind 归档留 iCloud，无需收编
 - [ ] SwitchHosts · `net.oldj.switchhosts` → `switchhosts`
 - [ ] Obsidian · `md.obsidian` → `obsidian`
 - [ ] AnyDesk · `com.philandro.anydesk` → `anydesk`
