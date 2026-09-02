@@ -122,7 +122,7 @@
 | Tencent Lemon | 手动 | — | — | m | — | | p13 清理工具 |
 | Monitoring Helper | 手动 | 无 cask | m | m | — | 保留 | core 已有 macmon |
 | Stats | core | `stats` | ✓ | ✓ | — | 在用 | 2026-08-31 新装收编 core：菜单栏实时系统监控（内存/压力/swap/进程排行，兼 CPU/GPU/网络）；免费开源 exelban/stats；终端侧监控已有 macmon(core)；mini/p13 brew 直装（无 adopt 步骤），p14 拉取时会装上 |
-| Filo | 手动 | 无（⚠ filo=filomail） | m | m | — | 保留 | cask filo 是别的产品，勿装 |
+| ~~Filo~~ | 手动 | 无（⚠ filo=filomail） | 已卸 | m | — | **已退役(mini)** | 2026-09-02 mini 卸载：Electron 邮件客户端占 727MB 太重，改用 Apple Mail（系统自带 ~100MB）；腾讯企业邮箱走 IMAP `imap.exmail.qq.com:993`；cask filo 是别的产品，勿装 |
 | Caesium | 手动 | 无 cask | m | m | — | 保留 | |
 | 罗技 Options+ | 手动（官网） | 无 cask | m | m | — | 保留 | |
 | BaiduNetdisk | 手动 | — | — | — | m | | p14 |
