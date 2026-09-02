@@ -1,9 +1,9 @@
 #!/bin/bash
-# app-radar.sh —— 每日软件情报抓取 + openclaw 分析
+# app-radar.sh —— 每日软件情报抓取
 #
 # 用法:
-#   app-radar.sh                        # 抓取 + 分析（默认）
-#   RADAR_NO_ANALYZE=1 ./app-radar.sh  # 只抓取不分析
+#   app-radar.sh                        # 只抓取（默认）
+#   RADAR_NO_ANALYZE=0 ./app-radar.sh  # 抓取 + 内嵌分析（不推荐，慢）
 #
 # 数据源（每段独立容错，任一失败不影响其余）:
 #   1. Hacker News 首页（Algolia API）
@@ -14,12 +14,11 @@
 #
 # 输出:
 #   ~/.local/state/app-radar/YYYY-MM-DD.md           抓取数据（结构化 markdown）
-#   ~/.local/state/app-radar/YYYY-MM-DD-analysis.md  openclaw 分析结果
 #   ~/.local/state/app-radar/app-radar.log           运行日志
 #
-# 依赖: curl / python3 / mise(->node->openclaw，仅分析阶段需要)
+# 依赖: curl / python3
 # 代理: 默认 127.0.0.1:7897（HN/PH 为国际源）；RADAR_NO_PROXY=1 关闭
-# 定时: ~/Library/LaunchAgents/com.qiuwenbo.app-radar.plist 每天 08:30
+# 定时: OpenClaw cron 每天 08:30（job app-radar-daily-v2，agent 抓取后自行分析）
 
 RADAR_DIR="$HOME/.local/state/app-radar"
 TODAY=$(date +%F)
@@ -107,41 +106,8 @@ PYEOF
 
 echo "抓取完成: $OUT ($(wc -l < "$OUT" | tr -d ' ') 行)"
 
-# ---------- 分析阶段（openclaw，可跳过） ----------
-# RADAR_AGENT 默认 main（openclaw agents list 可查）；RADAR_MODEL 可临时换模型
-if [[ "$RADAR_NO_ANALYZE" != "1" ]]; then
-  PROMPT_FILE="$RADAR_DIR/prompt-$TODAY.md"   # 勿用点开头文件名（openclaw 曾误报非 UTF-8）
-  cat > "$PROMPT_FILE" <<EOF
-你是我的软件雷达分析员。今天是 $TODAY。
-
-请阅读今日抓取数据：$OUT
-并对照我的三机软件台账：$HOME/workspace/mac-env-sync/docs/manuals/app-inventory.md（6 大类，含已装清单与已退役记录）
-
-输出一份 markdown 日报，要求：
-1. 【今日最值得关注】挑 5-10 条，偏好：开发者工具、开源、免费、有官方 brew cask 的 macOS 软件
-2. 每条给：一句话价值判断 + 是否有官方 cask（token 名，可验证）
-3. 【与已装重复】对照台账，指出哪些新品与我已装软件功能重叠、是否值得替换
-4. 【建议动作】哪些值得我按"台账→Brewfile→push"流程收编试用
-语言用中文，直接输出日报正文，不要寒暄。
-EOF
-  OPENCLAW_ARGS=(agent --agent "${RADAR_AGENT:-main}" --message-file "$PROMPT_FILE")
-  [[ -n "$RADAR_MODEL" ]] && OPENCLAW_ARGS+=(--model "$RADAR_MODEL")
-  if "$MISE_BIN" exec node -- openclaw "${OPENCLAW_ARGS[@]}" > "$ANALYSIS.raw" 2>"$RADAR_DIR/openclaw-stderr.log"; then
-    python3 - "$ANALYSIS.raw" "$ANALYSIS" <<'PYEOF'
-import sys, json
-raw = open(sys.argv[1]).read()
-try:
-    d = json.loads(raw)
-    text = d.get("reply") or d.get("text") or d.get("message") or ""
-except Exception:
-    text = raw
-open(sys.argv[2], "w").write(text if text.strip() else raw)
-PYEOF
-    echo "分析完成: $ANALYSIS ($(wc -c < "$ANALYSIS" | tr -d ' ') 字节)"
-  else
-    echo "⚠ openclaw 分析失败（gateway 未运行或未配置路由？），跳过。stderr 见 $RADAR_DIR/openclaw-stderr.log"
-  fi
-  rm -f "$PROMPT_FILE"
-fi
+# 默认只抓取不内嵌分析（嵌套 openclaw agent CLI 会新建完整会话，极慢）
+RADAR_NO_ANALYZE=${RADAR_NO_ANALYZE:-1}
 
 echo "===== done $(date +%T) ====="
+# 分析由 cron agent 在会话内完成（脚本只负责抓取 + 推送归档）
