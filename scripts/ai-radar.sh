@@ -20,7 +20,7 @@
 #
 # 依赖: curl / python3（分析由 OpenClaw cron agent 在会话内完成，不再内嵌 CLI 嵌套会话）
 # 代理: 默认 127.0.0.1:7897（HN/HF 为国际源）；RADAR_NO_PROXY=1 关闭
-# 定时: OpenClaw cron 每天 08:45（job ai-radar-daily，agent 抓取后自行分析）
+# 定时: OpenClaw cron 每天 08:20（job ai-radar-daily，agent 抓取后自行分析）
 
 # 默认只抓取不内嵌分析（嵌套 openclaw agent CLI 会新建完整会话，极慢）
 RADAR_NO_ANALYZE=${RADAR_NO_ANALYZE:-1}

@@ -17,7 +17,7 @@
 #
 # 依赖: curl / python3
 # 代理: 默认 127.0.0.1:7897（NVD/GitHub 为国际源）；RADAR_NO_PROXY=1 关闭
-# 定时: OpenClaw cron 每天 08:15（agent 抓取后自行分析）
+# 定时: OpenClaw cron 每天 08:10（agent 抓取后自行分析）
 
 RADAR_DIR="$HOME/.local/state/sec-radar"
 TODAY=$(date +%F)

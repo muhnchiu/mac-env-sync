@@ -8,7 +8,7 @@ now = datetime.datetime.now(tz_cst)
 today = sys.argv[1] if len(sys.argv) > 1 else now.strftime('%Y-%m-%d')
 # 工作日切分：前一天 18:00 ~ 今天 18:00（不遗漏晚上加班记录）
 date_end = datetime.datetime.strptime(today, '%Y-%m-%d').replace(hour=18, minute=0, second=0, tzinfo=tz_cst)
-if now < date_end and sys.argv[1] is None:
+if now < date_end and len(sys.argv) < 2:
     # 正常定时任务在 18:00 跑，end 就是今天 18:00
     pass
 date_start = date_end - datetime.timedelta(days=1)
