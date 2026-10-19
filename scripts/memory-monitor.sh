@@ -51,18 +51,50 @@ else
   NOW=$(TZ=Asia/Shanghai date +%H%M)
 fi
 
-# ---------- 算可用内存占比 ----------
-avail_pct() {
-  local page_size free_p inact_p spec_p memsize
-  page_size=$(vm_stat | awk 'NR==1 {gsub(/\./,""); print $8}')
-  free_p=$(vm_stat | awk '/Pages free/ {gsub(/\./,""); print $3}')
-  inact_p=$(vm_stat | awk '/Pages inactive/ {gsub(/\./,""); print $3}')
-  spec_p=$(vm_stat | awk '/Pages speculative/ {gsub(/\./,""); print $3}')
-  memsize=$(sysctl -n hw.memsize)
-  echo $(( (free_p + inact_p + spec_p) * page_size * 100 / memsize ))
+# ---------- 采集内存页数据（一次采集，两个口径共用） ----------
+# 口径A（判断用，可回收语义）: 可用 = free + inactive + speculative
+# 口径B（展示用，Stats 公式对齐）: used = active+inactive+spec+wired+compressed-purgeable-external
+#   来源: exelban/stats Modules/RAM/readers.swift:58，与菜单栏显示同源
+MEMSIZE=$(sysctl -n hw.memsize)
+
+mem_sample() {
+  local stats
+  stats=$(vm_stat)
+  PS_PAGES=$(echo "$stats" | awk 'NR==1 {gsub(/\./,""); print $8}')
+  P_FREE=$(echo "$stats" | awk '/Pages free/ {gsub(/\./,""); print $3}')
+  P_ACTIVE=$(echo "$stats" | awk '/Pages active/ {gsub(/\./,""); print $3}')
+  P_INACT=$(echo "$stats" | awk '/Pages inactive/ {gsub(/\./,""); print $3}')
+  P_SPEC=$(echo "$stats" | awk '/Pages speculative/ {gsub(/\./,""); print $3}')
+  P_WIRED=$(echo "$stats" | awk '/Pages wired down/ {gsub(/\./,""); print $4}')
+  P_COMP=$(echo "$stats" | awk '/occupied by compressor/ {gsub(/\./,""); print $5}')
+  P_PURGE=$(echo "$stats" | awk '/Pages purgeable/ {gsub(/\./,""); print $3}')
+  P_EXT=$(echo "$stats" | awk '/File-backed pages/ {gsub(/\./,""); print $3}')
+  P_EXT=${P_EXT:-0}
 }
 
-PCT="${MM_FAKE_PCT:-$(avail_pct)}"
+# 未采集过时先采集（MM_FAKE_PCT 调试模式下主流程不采样，展示口径仍需数据）
+ensure_sample() { [ -n "${P_ACTIVE:-}" ] || mem_sample; }
+
+# 口径A：脚本触发判断用（free+inactive+speculative）
+avail_pct() {
+  ensure_sample
+  echo $(( (P_FREE + P_INACT + P_SPEC) * PS_PAGES * 100 / MEMSIZE ))
+}
+
+# 口径B：Stats 菜单栏同款公式，展示用
+stats_used_pct() {
+  ensure_sample
+  echo $(( (P_ACTIVE + P_INACT + P_SPEC + P_WIRED + P_COMP - P_PURGE - P_EXT) * PS_PAGES * 100 / MEMSIZE ))
+}
+
+stats_line() {
+  local used free
+  used=$(stats_used_pct)
+  free=$((100 - used))
+  echo "📊 Stats 口径：已使用 ${used}%，剩余 ${free}%（总 $((MEMSIZE / 1024 / 1024 / 1024))GB）"
+}
+
+PCT="${MM_FAKE_PCT:-$(mem_sample; avail_pct)}"
 
 # ---------- 关闭动作（唯一出口，工作时间永远不会走到这里） ----------
 quit_app() {
@@ -115,6 +147,8 @@ ${MARK} 内存偏低（可用 ${PCT}%，<10%）工作时间告警，请人工处
 
 当前占用最高的 5 个进程：
 $(ps -eo pid,rss,comm | sort -k2 -rn | head -6)
+
+$(stats_line)
 EOF
   exit 0
 fi
@@ -129,12 +163,14 @@ quit_vscode() {
     log_line critical "$WINDOW" quit-vscode-insiders
     quit_app "$CODE_INSIDERS"
     CLOSED+=("VS Code Insiders")
+    [ "$DRY_RUN" = "1" ] || { mem_sample; PCT=$(avail_pct); }
     return 1
   elif is_running "$CODE_STABLE" >/dev/null; then
     echo "${MARK} 内存不足（可用 ${PCT}%），非工作时间自动关闭 VS Code 释放内存"
     log_line critical "$WINDOW" quit-vscode-stable
     quit_app "$CODE_STABLE"
     CLOSED+=("VS Code")
+    [ "$DRY_RUN" = "1" ] || { mem_sample; PCT=$(avail_pct); }
     return 1
   fi
   return 0
@@ -145,7 +181,7 @@ if is_running "$EDGE_APP" >/dev/null; then
   log_line critical "$WINDOW" quit-edge
   quit_app "$EDGE_APP"
   CLOSED+=("Microsoft Edge")
-  [ "$DRY_RUN" = "1" ] || PCT=$(avail_pct)
+  [ "$DRY_RUN" = "1" ] || { mem_sample; PCT=$(avail_pct); }
   if [ "$PCT" -le 15 ]; then
     quit_vscode && true
   fi
@@ -162,6 +198,7 @@ if [ "${#CLOSED[@]}" -gt 0 ]; then
 else
   echo "${MARK} 内存不足（可用 ${PCT}%），未发现可关闭的目标应用（Edge / VS Code 均未运行）"
 fi
+stats_line
 echo ""
 echo "当前占用最高的 5 个进程："
 ps -eo pid,rss,comm | sort -k2 -rn | head -6
