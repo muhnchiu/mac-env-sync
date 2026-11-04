@@ -1,23 +1,15 @@
-
 ########## hostname ##########
 MacMini
 MacMini
-MacMini.local
-
 ########## macOS version ##########
 ProductName:		macOS
 ProductVersion:		26.5.2
 BuildVersion:		25F84
-
 ########## arch ##########
 arm64
-
 ########## brew formulae ##########
 ada-url
 aom
-apr
-apr-util
-aspell
 autoconf
 azure-cli
 bat
@@ -30,7 +22,6 @@ cmake
 cpolar
 curl
 dav1d
-difftastic
 eza
 fd
 ffmpeg
@@ -48,7 +39,6 @@ gettext
 gh
 giflib
 git
-git-delta
 git-filter-repo
 glib
 gmp
@@ -65,11 +55,10 @@ icu4c@78
 imath
 isl
 jasper
+jenv
 jmeter
-jpeg
 jpeg-turbo
 jpeg-xl
-json-c
 kilo
 krb5
 lame
@@ -88,7 +77,6 @@ libngtcp2
 libomp
 libpng
 libpq
-libpsl
 librsvg
 libsodium
 libssh2
@@ -103,7 +91,6 @@ libxau
 libxcb
 libxdmcp
 libxext
-libxpm
 libxrender
 libyaml
 libzip
@@ -121,7 +108,6 @@ mas
 maven
 merve
 mingw-w64
-mise
 mpdecimal
 mpfr
 nbytes
@@ -129,6 +115,8 @@ ncurses
 neovim
 netpbm
 nginx
+node
+nvm
 oniguruma
 opencode
 openexr
@@ -140,12 +128,11 @@ openssl@1.1
 openssl@3
 opus
 pango
-pcre
 pcre2
-php@5.6
 php@7.2
 pixman
 pkgconf
+pyenv
 python@3.12
 python@3.13
 python@3.14
@@ -161,12 +148,10 @@ simdutf
 sqlite
 starship
 svt-av1
-tidy-html5
 tmux
 tree-sitter
 unibilium
 unixodbc
-usage
 utf8proc
 uvwasi
 webp
@@ -178,7 +163,6 @@ xorgproto
 xz
 zoxide
 zstd
-
 ########## brew casks ##########
 antigravity-tools
 cc-switch
@@ -189,7 +173,6 @@ open-island
 redis
 sequel-ace
 wechattweak-cli
-
 ########## brew taps ##########
 anomalyco/tap
 exolnet/deprecated
@@ -203,57 +186,6 @@ redis/redis
 shivammathur/extensions
 shivammathur/php
 sunnyyoung/tap
-
-########## brew leaves (顶层包) ##########
-ada-url
-azure-cli
-bat
-c-ares
-chezmoi
-cmake
-difftastic
-eza
-fd
-ffmpeg
-fzf
-gcc
-gh
-git
-git-delta
-git-filter-repo
-go
-graphviz
-hdrhistogram_c
-jmeter
-lazydocker
-lazygit
-libffi
-macmon
-mas
-maven
-merve
-mingw-w64
-mise
-nbytes
-neovim
-nginx
-opencode
-openjdk@17
-openssl@1.1
-pkgconf
-python@3.9
-ranger
-reattach-to-user-namespace
-ripgrep
-rtmpdump
-shivammathur/php/php@5.6
-simdjson
-starship
-tmux
-uvwasi
-wget
-zoxide
-
 ########## mas (App Store apps) ##########
  408981434  iMovie 剪辑  (10.4.4)
  409183694  Keynote讲演  (14.5)
@@ -261,7 +193,6 @@ zoxide
  409203825  Numbers表格  (14.5)
  682658836  库乐队       (10.4.14)
 1295203466  Windows App  (11.3.7)
-
 ########## /Applications ##########
 企业微信.app
 淘宝开发者工具.app
@@ -334,28 +265,6 @@ wechatwebdevtools.app
 Windows App.app
 wpsoffice.app
 XMind.app
-
-########## ~/Applications ##########
-asr
-Chrome Apps.localized
-Claude Code URL Handler.app
-com.chitaner.Longshot
-Edge Apps.localized
-JetBrains Toolbox
-
-########## mise tools ##########
-java    temurin-21.0.12+101.0.LTS  ~/.config/mise/config.toml  temurin-21
-java    8 (symlink)
-java    17 (symlink)
-maven   3.6.3
-maven   3.9.12 (symlink)
-node    16.20.2
-node    22.14.0
-node    24.19.0                    ~/.config/mise/config.toml  24
-pnpm    11.9.0
-python  3.12.14                    ~/.config/mise/config.toml  3.12
-yarn    1.22.19
-
 ########## PATH ##########
 /Users/qiuwenbo/.nvm/versions/node/v24.19.0/bin
 /Users/qiuwenbo/.jenv/shims
@@ -390,10 +299,6 @@ yarn    1.22.19
 /Library/Java/JavaVirtualMachines/jdk-1.8.jdk/Contents/Home/bin
 /Users/qiuwenbo/.lmstudio/bin
 /Users/qiuwenbo/go/bin
-/Users/qiuwenbo/.claude/plugins/cache/claude-plugins-official/frontend-design/67a666efc852/bin
-/Users/qiuwenbo/.claude/plugins/cache/superpowers-marketplace/superpowers/4.0.3/bin
-/Users/qiuwenbo/.claude/plugins/cache/claude-code-warp/warp/2.1.0/bin
-
 ########## shells ##########
 # List of acceptable shells for chpass(1).
 # Ftpd will not allow users to connect who are not using
@@ -407,37 +312,73 @@ yarn    1.22.19
 /bin/tcsh
 /bin/zsh
 default shell: /bin/zsh
-
 ########## node global ##########
-(未安装: npm)
 
+├── corepack@0.35.0
+├── npm@11.17.0
+└── openclaw@2026.7.1-2
+/Users/qiuwenbo/.nvm/versions/node/v24.19.0/lib
 ########## python ##########
-Python 3.14.2
-annotated-types==0.8.0
+/Users/qiuwenbo/.pyenv/shims/python3
+Python 3.11.14
+annotated-doc==0.0.4
+annotated-types==0.7.0
+anyio==4.13.0
+certifi==2026.4.22
+click==8.3.3
+contourpy==1.3.3
+cycler==0.12.1
 et_xmlfile==2.0.0
-lxml==6.1.2
-numpy==2.5.2
+filelock==3.29.0
+fonttools==4.62.1
+fsspec==2026.4.0
+h11==0.16.0
+hf-xet==1.5.0
+httpcore==1.0.9
+httpx==0.28.1
+huggingface_hub==1.13.0
+idna==3.13
+kiwisolver==1.5.0
+lxml==6.1.1
+markdown-it-py==4.0.0
+matplotlib==3.10.8
+mdurl==0.1.2
+mlx-metal==0.31.2
+mlx==0.31.2
+mysql-connector-python==26.7.0
+numpy==2.4.4
 openpyxl==3.1.5
-pillow==12.3.0
-pip==25.3
+packaging==26.1
+pillow==12.2.0
+pip==26.1.1
 pptx2md==2.0.6
 pydantic_core==2.46.4
 pydantic==2.13.4
+Pygments==2.20.0
+pymssql==2.3.13
+PyMySQL==1.2.0
+pyparsing==3.3.2
+python-dateutil==2.9.0.post0
+python-docx==1.2.0
 python-pptx==1.0.2
+PyYAML==6.0.3
 RapidFuzz==3.14.5
-scipy==1.18.1
-tqdm==4.70.0
-typing_extensions==4.16.0
-typing-inspection==0.4.4
-wheel==0.45.1
+redis==8.0.1
+rich==15.0.0
+scipy==1.17.1
+setuptools==79.0.1
+shellingham==1.5.4
+six==1.17.0
+tqdm==4.67.3
+typer==0.25.1
+typing_extensions==4.15.0
+typing-inspection==0.4.2
 xlsxwriter==3.2.9
-
-########## dotfiles in $HOME ##########
+########## dotfiles in /Users/qiuwenbo ##########
 .babel.7.9.0.development.json
 .bash_history
 .bash_profile
 .bashrc
-.Brewfile
 .CFUserTextEncoding
 .chost
 .claude.json
@@ -485,7 +426,6 @@ xlsxwriter==3.2.9
 .zcompdump
 .zcompdump-MacBookPro13-5.9
 .zcompdump-MacMini-5.9
-.zcompdump-MacMini-5.9.MacMini.local.45864
 .zcompdump-MacMiniM4-5.9
 .zcompdump-MacMiniM4-5.9.MacMiniM4.local.38339
 .zcompdump-MacMiniM4-5.9.MacMiniM4.local.95381
@@ -493,15 +433,10 @@ xlsxwriter==3.2.9
 .zcompdump.MacMiniM4.local.14738
 .zprofile
 .zprofile.bak
-.zprofile.local
 .zprofile.pysave
 .zsh_history
 .zshrc
 .zshrc.backup
-.zshrc.bak.20260824-162337
 Documents/com~apple~CloudDocs
 jmeter.log
 nohup.out
-
-########## done ##########
-snapshot complete on MacMini.local
